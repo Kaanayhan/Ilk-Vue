@@ -1,69 +1,65 @@
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
- 
+  <div id="body">
+    <div class="ust"><div class="logo">
+      <router-link to="/" class="color"> <img src="./assets/voli.png" class="image" /></router-link></div>
+
+      <nav class="tab">
+        <h1 class="yazi">
+          <router-link to="/hakkimizda" class="color"> Hakkimizda </router-link>
+        </h1>
+        <h1 class="yazi">
+          <router-link to="/sosyal" class="color"> Sosyal </router-link>
+        </h1>
+        <h1 class="yazi">
+          <router-link to="/projeler" class="color"> Projeler </router-link>
+        </h1>
+<!--         <h1 class="yazi"> <router-link to="/giris" class="colorr"> Giriş </router-link></h1>
+ -->        <h1 class="yazi">
+          <router-link to="/kayit" class="colorr"> Kayıt </router-link>
+        </h1>
+      </nav>
+    </div>
+  <router-view></router-view>
+  </div> 
+  
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script></script>
 
+<style>
+#body {
+  width: 75%;
+  height: 700px;
+  margin: auto;
+}
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  width: 7.5%;
+  height: 10%;
 }
-
-nav {
+.ust {
   width: 100%;
-  font-size: 12px;
+  display: flex;
+}
+.tab {
   text-align: center;
-  margin-top: 2rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.yazi {
+  width: 22.5;
+  line-height: 90px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.yazi a {
+  text-decoration: none;
+}
+.color:hover {
+  color: gray;
+}
+.colorr{
+  color: red;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
