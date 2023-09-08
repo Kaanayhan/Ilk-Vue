@@ -117,9 +117,11 @@
  }
 .yaziii{
   font-size: medium;
+  
 }
 .buton{
-  width: 160px;
+  width: 150px;
+  margin-right: 8px;
 }
 .buttonn{
   width:320px;
