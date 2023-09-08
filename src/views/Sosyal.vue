@@ -1,40 +1,54 @@
 <template>
   <div class="orta">
-  <div class="sol">
-    <table border="0">
-      <tr>
-        <td><img src="../assets/İnsta.jpg" class="resimler" /></td>
-        <td>İnstegram</td>
-      </tr>
-      <tr>
-        <td><img src="../assets/y.png" class="resimler" /></td>
-        <td>Youtube</td>
-      </tr>
-      <tr>
-        <td><img src="../assets/Face.png" class="resimler" /></td>
-        <td>Facebook</td>
-      </tr>
-      <tr>
-        <td><img src="../assets/x-logo-twitter-elon-musk_dezeen_2364_col_0.webp" class="resimler" /></td>
-        <td>Twitter</td>
-      </tr>
-      <tr>
-        <td><img src="../assets/tiktok-logo-on-transparent-background-free-vector.jpg" class="resimler" /></td>
-        <td>Tiktok</td>
-      </tr>
-    </table>
-  </div>
-  <div class="sagg">
-    <h1 class="baslık">Bize Katılın</h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque iste! Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti consectetur atque, vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto amet minus
-
-  </div>
+    <div class="sol">
+      <table border="0">
+        <tr>
+          <td><img src="../assets/İnsta.png" class="resimler" /></td>
+          <td><span>İnstegram </span></td>
+        </tr>
+        <tr>
+          <td><img src="../assets/y.png" class="resimler" /></td>
+          <td>Youtube</td>
+        </tr>
+        <tr>
+          <td><img src="../assets/Face.png" class="resimler" /></td>
+          <td>Facebook</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="../assets/x-logo-twitter-elon-musk_dezeen_2364_col_0.webp"
+              class="resimler twit"
+            />
+          </td>
+          <td>Twitter</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="../assets/tiktok.png"
+              class="resimler"
+            />
+          </td>
+          <td>Tiktok</td>
+        </tr>
+      </table>
+    </div>
+    <div class="sagg">
+      <h1 class="baslık">Bize Katılın</h1>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
+      perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque iste!
+      Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet consectetur
+      adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti consectetur atque,
+      vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto amet minus
+    </div>
   </div>
 </template>
 
 <script></script>
 
 <style>
-.baslık{
+.baslık {
   text-align: center;
 }
 .orta {
@@ -42,11 +56,14 @@
   width: 100%;
   height: 90%;
 }
+.twit {
+  border-radius: 60px;
+}
 .sol {
   width: 50%;
   height: 84%;
   padding-left: 150px;
-  padding-top: 75px;
+  padding-top: 50px;
 }
 .sagg {
   width: 50%;
@@ -114,6 +131,23 @@
   }
   1% {
     opacity: 0;
+  }
+}@media (max-width: 320px) {
+  .resimler {
+    margin-left: 2%;
+  }
+  .sol {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 0;
+  }
+  .sagg {
+    width: 310px;
+    text-align: center;
+    margin-left: 50px;
+    position: absolute;
+    top: 450px;
+    left: 10px;
   }
 }
 </style>

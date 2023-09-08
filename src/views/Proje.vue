@@ -46,7 +46,8 @@
 }
 .yerler {
   padding-left: 100px;
-  padding-top: 75px;
+  padding-top: 75px;  margin-left: 200px;
+
 }
 .res{
     width: 285px;
@@ -62,5 +63,19 @@
   1% {
     opacity: 0;
   }
+}
+@media (max-width: 320px) {
+ .res{
+  width: 92px;
+  height: 100px;
+ }
+ .yerler{
+  padding-top: 0;
+  margin-left: 0;
+  padding-left: 0;
+  display: flex;
+  
+ }
+
 }
 </style>

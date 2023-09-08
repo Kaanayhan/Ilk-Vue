@@ -37,11 +37,11 @@
         <h2>Cinsiyet</h2><br>
       
         <div class="radyolar">
-          <input type="radio" name="sa" />Erkek
+        <div> <input type="radio" name="sa" />Erkek</div> 
           <div class="radioo"><input type="radio" name="sa" />Kadın</div>
-          <div class="radioo"><input type="radio" name="sa" />Kuruvasan</div>
+          <div class="radioo"><input type="radio" name="sa" class="sa"/>Kuruvasan</div>
         </div>
-        <input type="button" class="buttonn" value="Onayla" @click="" />
+        <input type="button" class="buttonn" value="Onayla"  />
       </div>
     </div>
   </div>
@@ -51,11 +51,11 @@
   margin-top: 33px;
   color: white;
   width: 100%;
-  height: 12%;
+  height: 35px;
   background: linear-gradient(90deg, hsl(210.58deg 61.18% 66.67%), hsl(276.38deg 41.23% 55.29%));
   border: none;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  border-radius: 10px; 
   cursor: pointer;
 }
 .bosss {
@@ -65,7 +65,7 @@
   display: flex;
 }
 .radioo {
-  margin-left: 175px;
+  margin-left: 274px;
 }
 .sal {
   width: 100%;
@@ -107,5 +107,30 @@
   border: none;
   padding: 10px;
 }
+@media (max-width: 320px) {
+
+ .giris{
+    padding-top: 0;
+ }
+ .kayit{
+  margin-left: 0;
+ }
+.yaziii{
+  font-size: medium;
+}
+.buton{
+  width: 160px;
+}
+.buttonn{
+  width:320px;
+  height: 33px;
+}
+.radioo{
+  margin-left: 65px;
+}
+
+}
+
+
 </style>
 <script></script>
