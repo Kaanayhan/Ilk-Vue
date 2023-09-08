@@ -21,7 +21,7 @@
       <tr>
         <td>
           <a href="https://tr.wikipedia.org/wiki/Nemrut_Da%C4%9F%C4%B1"
-            ><img src="../assets/indir (1).jpg" class="res" /></a
+            ><img src="../assets/indir1.jpg" class="res" /></a
           ><br />Nemrut Dağı
         </td>
         <td>
