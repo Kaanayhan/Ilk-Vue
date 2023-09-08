@@ -68,7 +68,7 @@
   text-decoration: none;
 }
 .color:hover {
-  color: gray;
+  color: darkred;
 }
 
 
