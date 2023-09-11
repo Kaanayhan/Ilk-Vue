@@ -35,12 +35,12 @@
       </table>
     </div>
     <div class="sagg">
-      <h1 class="baslık">Bize Katılın</h1>
+      <div class="center"><h1 class="baslık">Bize Katılın</h1>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
       perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque iste!
       Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet consectetur
       adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti consectetur atque,
-      vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto amet minus
+      vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto amet minus</div>
     </div>
   </div>
 </template>
@@ -133,6 +133,10 @@
     opacity: 0;
   }
 }@media (max-width: 320px) {
+  .center{
+    position: absolute;
+    right: 1px;
+  }
   .resimler {
     margin-left: 2%;
   }
@@ -144,10 +148,8 @@
   .sagg {
     width: 310px;
     text-align: center;
-    margin-left: 50px;
     position: absolute;
     top: 450px;
-    left: 10px;
   }
 }
 </style>
