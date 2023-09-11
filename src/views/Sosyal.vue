@@ -4,7 +4,7 @@
       <table border="0">
         <tr>
           <td><img src="../assets/İnsta.png" class="resimler" /></td>
-          <td><span>İnstegram </span></td>
+          <td><span>instagram </span></td>
         </tr>
         <tr>
           <td><img src="../assets/y.png" class="resimler" /></td>
@@ -48,6 +48,7 @@
 <script></script>
 
 <style>
+
 .baslık {
   text-align: center;
 }
@@ -150,6 +151,7 @@
     text-align: center;
     position: absolute;
     top: 450px;
+    z-index: -1;
   }
 }
 </style>

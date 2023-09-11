@@ -1,41 +1,13 @@
 <template>
   <div class="ortaa">
-    <table class="yerler">
-      <tr>
-        <td>
-          <a href="https://kizkulesi.gov.tr/"
-            ><img src="../assets/indir.jpg" class="res"/></a
-          ><br />Kız Kulesi
-        </td>
-        <td>
-          <a href="https://www.anitkabir.com.tr/"
-            ><img src="../assets/anıt.jpg" class="res" /></a
-          ><br />AnıtKabir
-        </td>
-        <td>
-          <a href="https://www.pamukkale.com.tr/"
-            ><img src="../assets/Pamukkale-Travertenleri.jpg" class="res" /></a
-          ><br />Pamukkale
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="https://tr.wikipedia.org/wiki/Nemrut_Da%C4%9F%C4%B1"
-            ><img src="../assets/indir1.jpg" class="res" /></a
-          ><br />Nemrut Dağı
-        </td>
-        <td>
-          <a href="https://tr.wikipedia.org/wiki/Kapadokya"
-            ><img src="../assets/budget_4.png"  class="res" /></a
-          ><br />Kapadokya
-        </td>
-        <td>
-          <a href="https://cappadocia4u.com/tr/kapadokya-peri-bacalari/"
-            ><img src="../assets/urgup-three-beauties.jpg" class="res" /></a
-          ><br />Peri Bacaları
-        </td>
-      </tr>
-    </table>
+    <div class="grid-container">
+        <div class="grid-item"><img src="../assets/anıt.jpg" class="res"><div>Anıtkabir</div></div>
+        <div class="grid-item"><img src="../assets/indir.jpg" class="res"><div>Kız Kulesi</div></div>
+        <div class="grid-item"><img src="../assets/Pamukkale-Travertenleri.jpg" class="res"><div>Pamukkale</div></div>
+        <div class="grid-item"><img src="../assets/indir1.jpg" class="res"><div>Nemrut Dağı</div></div>
+        <div class="grid-item"><img src="../assets/budget_4.png" class="res"><div>Kapadokya</div></div>
+        <div class="grid-item"><img src="../assets/urgup-three-beauties.jpg" class="res"><div>Peri Bacaları</div></div>
+    </div>
   </div>
 </template>
 <style>
@@ -50,14 +22,27 @@
 
 }
 .res{
-    width: 285px;
-    height: 163px;
-    margin: 5px;
-    border-radius: 10px;
+    width: 300px;
+    height: 150px;
+    border-radius: 12px;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3)  ;
     animation: ressam;
   animation-iteration-count: 1;
   animation-duration: 2s;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(2, 160px); 
+    gap: 25px; 
+    justify-content: center; 
+    align-content: center; 
+    height: 500px; 
+}
+
+.grid-item {
+    border:none;
+    text-align: center;
 }
 @keyframes ressam {
   1% {
@@ -76,6 +61,15 @@
   display: flex;
   
  }
+ .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(3, 125px); 
+    gap: 25px; 
+    justify-content: center; 
+    align-content: center; 
+    height: 500px; 
+}
 
 }
 </style>
