@@ -133,7 +133,7 @@
   1% {
     opacity: 0;
   }
-}@media (max-width: 320px) {
+}@media (max-width: 426px) {
   .center{
     position: absolute;
     right: 1px;

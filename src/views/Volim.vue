@@ -51,7 +51,7 @@
   width: 50%;
   height: 84%;
 }
-@media (max-width: 320px) {
+@media (max-width: 426px) {
   .orta {
     width: 100%;
     height: 560px;

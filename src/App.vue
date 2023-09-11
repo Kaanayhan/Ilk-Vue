@@ -27,7 +27,7 @@
 <script></script>
 
 <style>
-@media (max-width:320px) {
+@media (max-width:426px) {
   .tab{
      width: 10%;
       font-size: 11px;

@@ -107,7 +107,7 @@
   border: none;
   padding: 10px;
 }
-@media (max-width: 320px) {
+@media (max-width: 426px) {
 
  .giris{
     padding-top: 0;

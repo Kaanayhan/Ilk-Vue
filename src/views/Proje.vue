@@ -49,7 +49,7 @@
     opacity: 0;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 426px) {
  .res{
   width: 92px;
   height: 100px;
