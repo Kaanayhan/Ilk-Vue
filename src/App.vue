@@ -60,22 +60,17 @@
   color: darkred;
 }
 @media (max-width:426px) {
-  .tab{
-     width: 10%;
-      font-size: 13px;
+ .yazi{
+  padding-right: 6px;
+ }
+  .tab { 
+    font-size: medium;
   }
-  .yazi{
-    padding-right: 20px;
-    margin-right: 2px ;
-  }
-
-
 }
 @media (max-width:321px) {
   .tab{
      width: 10%;
       font-size: 11px;
-      margin-left: 45px;
   }
   .yazi{
     padding-left: 7.5px;
