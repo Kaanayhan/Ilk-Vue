@@ -61,10 +61,10 @@
 }
 @media (max-width:426px) {
  .yazi{
-  padding-right: 6px;
+  padding-right: 17.5px;
  }
   .tab { 
-    font-size: medium;
+    font-size: 14px;
   }
 }
 @media (max-width:321px) {
