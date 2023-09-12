@@ -136,7 +136,7 @@
 }@media (max-width: 426px) {
   .center{
     position: absolute;
-    right: 1px;
+    right: 25px;
   }
   .resimler {
     margin-left: 2%;
@@ -147,11 +147,25 @@
     padding-top: 0;
   }
   .sagg {
-    width: 310px;
+    width: 410px;
     text-align: center;
     position: absolute;
     top: 450px;
     z-index: -1;
   }
 }
+@media (max-width: 321px) {
+
+  .center{
+    position: absolute;
+    right: 0px;
+  }
+  .sagg {
+    width: 300px;
+    position: absolute;
+    top: 425px;
+    z-index: -1;
+  }
+}
+
 </style>

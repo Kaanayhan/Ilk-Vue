@@ -70,6 +70,23 @@
     align-content: center; 
     height: 500px; 
 }
-
 }
+@media (max-width: 321px) {
+
+  .res{
+  width: 115px;
+  height: 100px;
+ }
+ .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 125px);
+    grid-template-rows: repeat(3, 125px); 
+    gap: 25px; 
+    justify-content: center; 
+    align-content: center; 
+    height: 500px; 
+    margin-left: 50px;
+}
+}
+
 </style>

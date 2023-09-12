@@ -68,10 +68,21 @@
   .img {
     position: absolute;
     bottom: 60px;
-    width: 250px;
-    height: 200px;
+    width: 300px;
+    height: 250px;
     padding: 0;
-    left: 35px;
+    left: 75px;
+  }
+}
+@media (max-width: 321px) {
+
+  .img {
+    position: absolute;
+    bottom: 0px;
+    width: 300px;
+    height: 250px;
+    padding: 0;
+    left: 50px;
   }
 }
 </style>

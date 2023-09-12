@@ -27,18 +27,7 @@
 <script></script>
 
 <style>
-@media (max-width:426px) {
-  .tab{
-     width: 10%;
-      font-size: 11px;
-  }
-  .yazi{
-    padding-right: 10px;
-    margin-right: 2px ;
-  }
 
-
-}
 
 #body {
   width: 75%;
@@ -70,6 +59,30 @@
 .color:hover {
   color: darkred;
 }
+@media (max-width:426px) {
+  .tab{
+     width: 10%;
+      font-size: 13px;
+  }
+  .yazi{
+    padding-right: 20px;
+    margin-right: 2px ;
+  }
 
+
+}
+@media (max-width:321px) {
+  .tab{
+     width: 10%;
+      font-size: 11px;
+      margin-left: 45px;
+  }
+  .yazi{
+    padding-left: 7.5px;
+    margin-left: 2px ;
+  }
+
+
+}
 
 </style>

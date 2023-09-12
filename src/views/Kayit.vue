@@ -113,25 +113,47 @@
     padding-top: 0;
  }
  .kayit{
-  margin-left: 0;
+  margin-left: 12.5px;
+
  }
 .yaziii{
   font-size: medium;
   
 }
 .buton{
-  width: 150px;
-  margin-right: 8px;
+  width: 190px;
+  margin-right: 14px;
 }
 .buttonn{
-  width:320px;
+  width:400px;
   height: 33px;
 }
 .radioo{
-  margin-left: 65px;
+  margin-left: 110px;
 }
 
 }
+@media (max-width: 321px) {
+.yaziii{
+  font-size: medium;
+
+  
+}
+.buton{
+  width: 175px;
+  margin-right: 15px;
+}
+.buttonn{
+  width:375px;
+  height: 33px;
+}
+.radioo{
+  margin-left: 95px;
+}
+
+}
+
+
 
 
 </style>
