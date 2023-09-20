@@ -12,21 +12,25 @@ const router = createRouter({
       component: () => import('../views/Volim.vue')
     },
     {
-     path:"/sosyal",
-    component: () => import('../views/Sosyal.vue')
+      path: '/sosyal',
+      component: () => import('../views/Sosyal.vue')
     },
     {
-      path:"/projeler",
-     component: () => import('../views/Proje.vue')
-     },
-     {
-      path:"/kayit",
-     component: () => import('../views/Kayit.vue')
-     },
-     {
-      path:"/giris",
-     component: () => import('../views/Giris.vue')
-     }
+      path: '/projeler',
+      component: () => import('../views/Proje.vue')
+    },
+    {
+      path: '/kayit',
+      component: () => import('../views/Kayit.vue')
+    },
+    {
+      path: '/yorum',
+      component: () => import('../views/YorumYaz.vue')
+    },
+    {
+      path: '/yorumlar',
+      component: () => import('../views/YorumAlani.vue')
+    }
   ]
 })
 
