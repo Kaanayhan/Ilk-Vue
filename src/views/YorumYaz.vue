@@ -6,19 +6,20 @@ const newComment = ref(true)
 const adUyari = ref(false)
 const soyadUyari = ref(false)
 const yorumUyari = ref(false)
-
+const currentDate = ref(new Date().toLocaleString())
 const router = useRouter()
 const store = useCommentStore()
 const loginForm = ref({
   username: null,
   surname: null,
-  comment: null
+  comment: null,
+  date: new Date()
 })
-
 const commentSubmit = () => {
   if (loginForm.value.comment && loginForm.value.username && loginForm.value.surname) {
     store.addComment(loginForm.value)
     newComment.value = false
+    currentDate.value = new Date().toLocaleString()
   } else if (loginForm.value.comment && loginForm.value.username) {
     soyadUyari.value = true
     adUyari.value = false
@@ -55,6 +56,9 @@ const commentDelete = () => {
 const againComment = () => {
   router.push('/yorum')
   newComment.value = true
+  loginForm.value.comment = null
+  loginForm.value.surname = null
+  loginForm.value.username = null
 }
 const viewComment = () => {
   router.push('/yorumlar')
@@ -102,7 +106,7 @@ const viewComment = () => {
       </div>
       <div>
         <div style="display: flex">
-          <button class="button" @click="commentSubmit">
+          <button class="comment" @click="commentSubmit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -115,7 +119,7 @@ const viewComment = () => {
             </svg>
             Yorumu Ekle
           </button>
-          <button class="button delete" @click="commentDelete">
+          <button class="comment delete" @click="commentDelete">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -134,7 +138,7 @@ const viewComment = () => {
   </div>
   <div v-else>
     <div class="yorumbutonlari">
-      <button class="button view yann" @click="againComment">
+      <button class="commentinfo view yann" @click="againComment">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1em"
@@ -147,7 +151,7 @@ const viewComment = () => {
         </svg>
         Tekrar Yorum At
       </button>
-      <button class="button view" @click="viewComment">
+      <button class="commentinfo view" @click="viewComment">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1em"
@@ -209,7 +213,26 @@ const viewComment = () => {
 .yann {
   margin-right: 35px;
 }
-.button {
+.comment {
+  padding: 15px 15px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04aa6d;
+  border: none;
+  margin-left: 35px;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  animation: mySlide;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.commentinfo {
   padding: 15px 15px;
   font-size: 20px;
   text-align: center;
@@ -231,7 +254,12 @@ const viewComment = () => {
 .delete {
   margin-left: 325px;
 }
-.button:active {
+.comment:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.commentinfo:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);

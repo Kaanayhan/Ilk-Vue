@@ -11,7 +11,7 @@ const sendComment = () => {
 </script>
 <template>
   <div class="yorumm">
-    <button class="buttonnn" @click="sendComment">
+    <button class="sendComment" @click="sendComment">
       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" style="padding-right: 7.5px;">
         <path
           d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
@@ -23,7 +23,8 @@ const sendComment = () => {
     <div class="alinanyorum">Efsane site</div>
     <div class="isim" v-for="(comment, index) in store.getComments" :key="index">
       <b> {{ comment.username }} {{ comment.surname }}</b>
-      <div class="alinanyorum">{{ comment.comment }}</div>
+      <div class="alinanyorum">{{ comment.comment }}
+       <p class="date">Tarih:{{ comment.date }}</p></div>
     </div>
   </div>
 </template>
@@ -37,6 +38,10 @@ const sendComment = () => {
 .isim {
   margin-top: 20px;
 }
+.date{
+  margin-top: 55px;
+ margin-left: 350px;
+}
 .alinanyorum {
   background-color: lightgray;
   word-wrap: break-word;
@@ -44,7 +49,7 @@ const sendComment = () => {
   width: 75%;
   height: 100px;
 }
-.buttonnn {
+.sendComment {
   margin-left: 895px;
 
   padding: 15px 15px;
@@ -63,7 +68,7 @@ const sendComment = () => {
   display: flex;
     align-items: center;
 }
-.buttonnn:active {
+.sendComment:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
