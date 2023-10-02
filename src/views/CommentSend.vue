@@ -7,7 +7,6 @@ const newComment = ref(true)
 const adUyari = ref(false)
 const soyadUyari = ref(false)
 const yorumUyari = ref(false)
-const currentDate = ref(new Date().toLocaleString())
 const router = useRouter()
 const store = useCommentStore()
 const loginForm = ref({
@@ -20,7 +19,6 @@ const commentSubmit = () => {
   if (loginForm.value.comment && loginForm.value.username && loginForm.value.surname) {
     store.addComment(loginForm.value)
     newComment.value = false
-    currentDate.value = new Date().toLocaleString()
   } else if (loginForm.value.comment && loginForm.value.username) {
     soyadUyari.value = true
     adUyari.value = false
@@ -210,9 +208,9 @@ svg{
 }
 
 .yorumbutonlari {
-  width: 60%;
-  height: 200px;
-  margin-left: 450px;
+  width: 45%;
+  height: 175px;
+  margin: 0 auto;
   margin-top: 100px;
   text-align: center;
   display: flex;
