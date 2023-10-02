@@ -2,6 +2,7 @@
 import { useCommentStore } from '../stores/comment'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
+
 const newComment = ref(true)
 const adUyari = ref(false)
 const soyadUyari = ref(false)
@@ -63,6 +64,7 @@ const againComment = () => {
 const viewComment = () => {
   router.push('/yorumlar')
 }
+
 </script>
 <template>
   <div class="yorum" v-if="newComment">
@@ -102,6 +104,7 @@ const viewComment = () => {
           maxlength="200"
           v-model="loginForm.comment"
         ></textarea>
+
         <div v-if="yorumUyari" class="error">Lütfen yorum alanını doldurunuz.</div>
       </div>
       <div>
@@ -168,13 +171,17 @@ const viewComment = () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .giriss {
   width: 90%;
   margin-left: 35px;
   margin-top: 10px;
   height: 25px;
   padding-left: 5px;
+}
+svg{
+  fill: #ffffff;
+
 }
 .adsoyad {
   margin-left: 35px;

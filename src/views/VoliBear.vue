@@ -1,7 +1,7 @@
 <template>
-  <div class="orta">
-    <div class="soll">
-      <div class="yazilar">
+  <div class="mid">
+    <div class="left">
+      <div class="text">
         <h1>Welcome,</h1>
         I am Ramon,a product designer from Barcelona <br />
         currently working with <span class="textcolor"> Red Bull </span> and teaching design at<br />
@@ -9,12 +9,12 @@
         Varner and Intersport.
       </div>
     </div>
-    <div class="sag">
+    <div class="right">
       <img src="../assets/volibear.png" class="img" />
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .img {
   width: 100%;
   height: 120%;
@@ -36,33 +36,33 @@
 .textcolor {
   color: red !important;
 }
-.orta {
+.mid {
   display: flex;
   width: 100%;
   height: 90%;
 }
-.soll {
+.left {
   width: 50%;
   height: 84%;
   padding-left: 100px;
   padding-top: 150px;
 }
-.sag {
+.right {
   width: 50%;
   height: 84%;
 }
 @media (max-width: 426px) {
-  .orta {
+  .mid {
     width: 100%;
     height: 560px;
   }
-  .yazilar {
+  .text {
     margin: 0 50px 100px 0;
   }
-  .soll {
+  .left {
     padding-top: 50px;
   }
-  .sag {
+  .right {
     margin-left: 25%;
   }
   .img {

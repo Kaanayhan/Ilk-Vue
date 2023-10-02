@@ -1,58 +1,55 @@
 <template>
-  <div class="orta">
-    <div class="sol">
+  <div class="mid">
+    <div class="left">
       <table border="0">
         <tr>
-          <td><img src="../assets/İnsta.png" class="resimler" /></td>
+          <td><img src="../assets/İnsta.png" class="pictures" /></td>
           <td><span>instagram </span></td>
         </tr>
         <tr>
-          <td><img src="../assets/y.png" class="resimler" /></td>
+          <td><img src="../assets/y.png" class="pictures" /></td>
           <td>Youtube</td>
         </tr>
         <tr>
-          <td><img src="../assets/Face.png" class="resimler" /></td>
+          <td><img src="../assets/Face.png" class="pictures" /></td>
           <td>Facebook</td>
         </tr>
         <tr>
           <td>
             <img
               src="../assets/x-logo-twitter-elon-musk_dezeen_2364_col_0.webp"
-              class="resimler twit"
+              class="pictures twit"
             />
           </td>
           <td>Twitter</td>
         </tr>
         <tr>
           <td>
-            <img
-              src="../assets/tiktok.png"
-              class="resimler"
-            />
+            <img src="../assets/tiktok.png" class="pictures" />
           </td>
           <td>Tiktok</td>
         </tr>
       </table>
     </div>
-    <div class="sagg">
-      <div class="center"><h1 class="baslık">Bize Katılın</h1>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
-      perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque iste!
-      Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet consectetur
-      adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti consectetur atque,
-      vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto amet minus</div>
+    <div class="right">
+      <div class="center">
+        <h1 class="title">Bize Katılın</h1>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
+        perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque
+        iste! Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet
+        consectetur adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti
+        consectetur atque, vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto
+        amet minus
+      </div>
     </div>
   </div>
 </template>
 
-<script></script>
-
-<style>
-
-.baslık {
+<style scoped>
+.title {
   text-align: center;
 }
-.orta {
+.mid {
   display: flex;
   width: 100%;
   height: 90%;
@@ -60,13 +57,13 @@
 .twit {
   border-radius: 60px;
 }
-.sol {
+.left {
   width: 50%;
   height: 84%;
   padding-left: 150px;
   padding-top: 50px;
 }
-.sagg {
+.right {
   width: 50%;
   height: 84%;
   padding-top: 200px;
@@ -116,7 +113,7 @@
 .textcolor {
   color: red;
 }
-.resimler {
+.pictures {
   width: 100px;
   height: 100px;
   animation: resim;
@@ -133,20 +130,21 @@
   1% {
     opacity: 0;
   }
-}@media (max-width: 426px) {
-  .center{
+}
+@media (max-width: 426px) {
+  .center {
     position: absolute;
     right: 25px;
   }
-  .resimler {
+  .pictures {
     margin-left: 2%;
   }
-  .sol {
+  .left {
     width: 100%;
     padding-left: 0;
     padding-top: 0;
   }
-  .sagg {
+  .right {
     width: 410px;
     text-align: center;
     position: absolute;
@@ -155,17 +153,15 @@
   }
 }
 @media (max-width: 321px) {
-
-  .center{
+  .center {
     position: absolute;
     right: 0px;
   }
-  .sagg {
+  .right {
     width: 300px;
     position: absolute;
     top: 425px;
     z-index: -1;
   }
 }
-
 </style>

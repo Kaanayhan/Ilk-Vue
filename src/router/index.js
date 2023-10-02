@@ -5,31 +5,31 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('../views/Volim.vue')
+      component: () => import('../views/VoliBear.vue')
     },
     {
       path: '/hakkimizda',
-      component: () => import('../views/Volim.vue')
+      component: () => import('../views/VoliBear.vue')
     },
     {
       path: '/sosyal',
-      component: () => import('../views/Sosyal.vue')
+      component: () => import('../views/SociaL.vue')
     },
     {
       path: '/projeler',
-      component: () => import('../views/Proje.vue')
+      component: () => import('../views/ProjecT.vue')
     },
     {
       path: '/kayit',
-      component: () => import('../views/Kayit.vue')
+      component: () => import('../views/RegisteR.vue')
     },
     {
       path: '/yorum',
-      component: () => import('../views/YorumYaz.vue')
+      component: () => import('../views/CommentSend.vue')
     },
     {
       path: '/yorumlar',
-      component: () => import('../views/YorumAlani.vue')
+      component: () => import('../views/CommentArea.vue')
     }
   ]
 })

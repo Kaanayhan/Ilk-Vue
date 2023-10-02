@@ -1,6 +1,8 @@
+<script setup>
+</script>
 <template>
-  <div class="body">
-    <div class="ust">
+  <div>
+    <div class="top">
       <div class="logo">
         <router-link to="/" class="color">
           <img src="./assets/voli.png" class="image"
@@ -8,19 +10,19 @@
       </div>
 
       <nav class="tab">
-        <h1 class="yazi">
+        <h1 class="textTop">
           <router-link to="/hakkimizda" class="color"> Hakkimizda </router-link>
         </h1>
-        <h1 class="yazi">
+        <h1 class="textTop">
           <router-link to="/sosyal" class="color"> Sosyal </router-link>
         </h1>
-        <h1 class="yazi">
+        <h1 class="textTop">
           <router-link to="/projeler" class="color"> Projeler </router-link>
         </h1>
-        <h1 class="yazi">
+        <h1 class="textTop">
           <router-link to="/kayit" class="color"> Kayıt </router-link>
         </h1>
-        <h1 class="yazi">
+        <h1 class="textTop">
           <router-link to="/yorumlar" class="color"> Yorum </router-link>
         </h1>
       </nav>
@@ -32,18 +34,14 @@
 <script></script>
 
 <style>
-#body {
-  width: 75%;
-  height: 700px;
-  margin: auto;
-}
+
 .logo {
   width: 7.5%;
   height: 10%;
   margin-top: 5px;
   margin-left: 5px;
 }
-.ust {
+.top {
   width: 100%;
   display: flex;
 }
@@ -53,19 +51,19 @@
   display: flex;
   justify-content: space-evenly;
 }
-.yazi {
+.textTop {
   width: 22.5;
   line-height: 90px;
 }
 
-.yazi a {
+.textTop a {
   text-decoration: none;
 }
 .color:hover {
   color: darkred;
 }
 @media (max-width: 426px) {
-  .yazi {
+  .textTop {
     padding-left: 13px;
   }
 
@@ -78,7 +76,7 @@
     width: 10%;
     font-size: 11px;
   }
-  .yazi {
+  .textTop {
     padding-left: 7.5px;
     margin-left: 2px;
   }

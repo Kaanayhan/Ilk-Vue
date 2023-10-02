@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .ortaa {
   width: 100%;
   height: 90%;
