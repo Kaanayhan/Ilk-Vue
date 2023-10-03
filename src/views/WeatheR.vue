@@ -3,60 +3,89 @@
     <input type="text" id="search-bar" placeholder="Ülke ara..." />
   </div>
   <div v-if="countryList.length > 0" class="grid-container">
-    <div
+    <div 
       v-for="(country, index) in countryList"
       :key="index"
       class="grid-item"
       @click="showCountryInfo(country)"
     >
-      {{ country.name }}
+      <div class=""><img :src="country.flags.png" alt="Bayrak" class="flag-icon" /></div>
+      <div class="">{{ country.name.common }}</div>
     </div>
   </div>
   <div v-if="selectedCountry" class="modal">
     <div class="modal-content">
       <span class="close" @click="closeModal">&times;</span>
-      <h2>{{ selectedCountry.name }}</h2>
-      <p>Başkent: {{ selectedCountry.capital }}</p>
+      <h2>{{ selectedCountry.name.common }}</h2>
+      <p>Başkent: {{ selectedCountry.capital[0] }}</p>
       <p>Nüfus: {{ selectedCountry.population }}</p>
-      <!-- Daha fazla ülke bilgisi eklemek için gerekli alanları buraya ekleyebilirsiniz -->
+      <p>Bölge: {{ selectedCountry.region }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue';
 
-const weatherCode = ref(0)
-const countryList = ref([])
-const selectedCountry = ref(null)
+const countryList = ref([]);
+const selectedCountry = ref(null);
 
-navigator.geolocation.getCurrentPosition((position) => {
-  fetch(
-    'https://api.open-meteo.com/v1/forecast?latitude=' +
-      position.coords.latitude +
-      '&longitude=' +
-      position.coords.longitude +
-      '&current_weather=true'
-  )
+onMounted(() => {
+  // Ülke verilerini çek
+  fetch('https://restcountries.com/v3.1/all?fields=name,flags')
     .then((res) => res.json())
-    .then((data) => (weatherCode.value = data.current_weather.weathercode))
-})
+    .then((data) => {
+      // Ülke verilerine bayrak URL'sini ekleyerek countryList ref'ine atama
+      countryList.value = data.map((country) => {
+        return {
+          ...country,
+          flag: country.flags[0] // Bayrak URL'si
+        };
+      });
 
-fetch('https://countriesnow.space/api/v0.1/countries/positions')
-  .then((res) => res.json())
-  .then((data) => (countryList.value = data.data))
+      // Ülke isimlerine göre A'dan Z'ye doğru sırala
+      countryList.value.sort((a, b) => {
+        const nameA = a.name.common.toUpperCase();
+        const nameB = b.name.common.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+    });
+});
 
 function showCountryInfo(country) {
-  selectedCountry.value = country
-  console.log('Tıklanan Ülke Bilgisi:', country)
+  selectedCountry.value = country;
+  console.log('Tıklanan Ülke Bilgisi:', country);
 }
 
 function closeModal() {
-  selectedCountry.value = null
+  selectedCountry.value = null;
 }
 </script>
 
 <style scoped>
+.search-container {
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -90,6 +119,11 @@ function closeModal() {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.flag-icon {
+  width: 75px;
+  height: 40px;
 }
 .search-container {
   margin: 2% 0 1% 2%;
