@@ -62,7 +62,6 @@ const againComment = () => {
 const viewComment = () => {
   router.push('/yorumlar')
 }
-
 </script>
 <template>
   <div class="yorum" v-if="newComment">
@@ -177,9 +176,8 @@ const viewComment = () => {
   height: 25px;
   padding-left: 5px;
 }
-svg{
+svg {
   fill: #ffffff;
-
 }
 .adsoyad {
   margin-left: 35px;

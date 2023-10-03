@@ -30,6 +30,9 @@ const router = createRouter({
     {
       path: '/yorumlar',
       component: () => import('../views/CommentArea.vue')
+    }, {
+      path: '/havadurumu',
+      component: () => import('../views/WeatheR.vue')
     }
   ]
 })

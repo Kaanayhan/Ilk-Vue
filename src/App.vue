@@ -25,6 +25,9 @@
         <h1 class="textTop">
           <router-link to="/yorumlar" class="color"> Yorum </router-link>
         </h1>
+        <h1 class="textTop">
+          <router-link to="/havadurumu" class="color"> Hava Durumu </router-link>
+        </h1>
       </nav>
     </div>
     <router-view></router-view>
@@ -42,6 +45,8 @@
   margin-left: 5px;
 }
 .top {
+  justify-content: space-between;
+
   width: 100%;
   display: flex;
 }
@@ -53,14 +58,14 @@
 }
 .textTop {
   width: 22.5;
-  line-height: 90px;
+  line-height: 120px;
 }
 
 .textTop a {
   text-decoration: none;
 }
 .color:hover {
-  color: darkred;
+  color: gray;
 }
 @media (max-width: 426px) {
   .textTop {
