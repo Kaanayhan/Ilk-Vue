@@ -21,11 +21,33 @@
           <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
         </div>
         <div class="country-map"></div>
-        <p>Başkent: {{ selectedCountry.capital[0] }}</p>
+        <p>Başkent: {{ selectedCountry.capital?.[0] }}</p>
         <p>Nüfus: {{ selectedCountry.population }}</p>
         <p>Bölge: {{ selectedCountry.region }}</p>
       </div>
-      <a :href="selectedCountry.maps.googleMaps" alt="Harita" class="map-icon" style="color: darkblue; ">Haritada Göster </a>
+      <div style="max-width: 100%; overflow: hidden; color: red; width: 500px; height: 500px">
+        <div id="my-map-display" style="height: 100%; width: 100%; max-width: 100%">
+          <iframe
+            style="height: 100%; width: 100%; border: 0"
+            frameborder="0"
+            :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.name.common}+country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
+          ></iframe>
+        </div>
+        <a
+          class="embedded-map-code"
+          href="https://www.bootstrapskins.com/themes"
+          id="get-data-for-embed-map"
+          >premium bootstrap themes</a
+        >
+      </div>
+      <a
+        target="_blank"
+        :href="selectedCountry.maps.googleMaps"
+        alt="Harita"
+        class="map-icon"
+        style="color: darkblue"
+        >Haritada Göster
+      </a>
     </div>
   </div>
 </template>
@@ -38,6 +60,7 @@ const selectedCountry = ref(null)
 const weatherCode = ref(0)
 navigator.geolocation.getCurrentPosition((position) => {
   console.log(position, 'position')
+
   fetch(
     'https://api.open-meteo.com/v1/forecast?latitude=' +
       position.coords.latitude +
@@ -78,17 +101,23 @@ const openModal = (country) => {
   selectedCountry.value = country
 }
 
+
 const closeModal = () => {
   selectedCountry.value = null
 }
 </script>
 <style scoped>
-
 .search-container {
   margin-top: 1%;
   margin-bottom: 20px;
 }
-
+#my-map-display .text-marker {
+}
+.map-generator {
+  max-width: 100%;
+  max-height: 100%;
+  background: none;
+}
 #search-bar {
   padding: 10px;
   font-size: 16px;
