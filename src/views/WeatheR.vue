@@ -16,12 +16,16 @@
   <div v-if="selectedCountry" class="modal-overlay" @click="closeModal">
     <div class="modal">
       <div class="modal-content">
-        <span class="close" @click.stop="closeModal">&times;</span>
         <h2>{{ selectedCountry.name.common }}</h2>
+        <div class="country-image">
+          <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
+        </div>
+        <div class="country-map"></div>
         <p>Başkent: {{ selectedCountry.capital[0] }}</p>
         <p>Nüfus: {{ selectedCountry.population }}</p>
         <p>Bölge: {{ selectedCountry.region }}</p>
       </div>
+      <a :href="selectedCountry.maps.googleMaps" alt="Harita" class="map-icon" style="color: darkblue; ">Haritada Göster </a>
     </div>
   </div>
 </template>
@@ -31,15 +35,28 @@ import { ref, onMounted } from 'vue'
 
 const countryList = ref([])
 const selectedCountry = ref(null)
-
+const weatherCode = ref(0)
+navigator.geolocation.getCurrentPosition((position) => {
+  console.log(position, 'position')
+  fetch(
+    'https://api.open-meteo.com/v1/forecast?latitude=' +
+      position.coords.latitude +
+      '&longitude=' +
+      position.coords.longitude +
+      '&current_weather=true'
+  )
+    .then((res) => res.json())
+    .then((data) => (weatherCode.value = data.current_weather.weathercode))
+})
 onMounted(() => {
-  fetch('https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region')
+  fetch('https://restcountries.com/v3.1/all')
     .then((res) => res.json())
     .then((data) => {
       countryList.value = data.map((country) => {
         return {
           ...country,
-          flag: country.flags.png
+          flag: country.flags?.png || 'YOK',
+          maps: country.maps || 'YOK'
         }
       })
 
@@ -65,8 +82,8 @@ const closeModal = () => {
   selectedCountry.value = null
 }
 </script>
-
 <style scoped>
+
 .search-container {
   margin-top: 1%;
   margin-bottom: 20px;
@@ -82,10 +99,13 @@ const closeModal = () => {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 10px;
 }
-
+#gmap_canvas img {
+  max-width: none !important;
+  background: none !important;
+}
 .grid-item {
   display: flex;
   flex-direction: column;
@@ -98,6 +118,10 @@ const closeModal = () => {
   font-size: 150%;
   text-align: center;
   height: 200px;
+}
+.country-flag {
+  width: 100px;
+  height: auto;
 }
 
 .flag-icon {
@@ -118,7 +142,7 @@ const closeModal = () => {
 }
 
 .modal {
-  background: white;
+  background: lightgray;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -139,5 +163,4 @@ const closeModal = () => {
   color: black;
   text-decoration: none;
 }
-
 </style>

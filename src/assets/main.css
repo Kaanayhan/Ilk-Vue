@@ -4,6 +4,7 @@
   box-sizing: border-box;
   color: black;
   font-family: 'Comfortaa', cursive;
+  text-decoration: none;
 }
 .image {
   width: 100%;

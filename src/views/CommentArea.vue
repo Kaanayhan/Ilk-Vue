@@ -55,7 +55,7 @@ const sendComment = () => {
   background-color: lightgray;
 }
 .isim {
-  margin-top: 20px;
+  margin-top: 21px;
 }
 .date {
   margin-top: 55px;

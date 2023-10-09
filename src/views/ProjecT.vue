@@ -1,16 +1,103 @@
 <template>
   <div class="ortaa">
     <div class="grid-container">
-        <div class="grid-item"><img src="../assets/anıt.jpg" class="res"><div>Anıtkabir</div></div>
-        <div class="grid-item"><img src="../assets/indir.jpg" class="res"><div>Kız Kulesi</div></div>
-        <div class="grid-item"><img src="../assets/Pamukkale-Travertenleri.jpg" class="res"><div>Pamukkale</div></div>
-        <div class="grid-item"><img src="../assets/indir1.jpg" class="res"><div>Nemrut Dağı</div></div>
-        <div class="grid-item"><img src="../assets/budget_4.png" class="res"><div>Kapadokya</div></div>
-        <div class="grid-item"><img src="../assets/urgup-three-beauties.jpg" class="res"><div>Peri Bacaları</div></div>
+      <div class="grid-item" @click="openModal('Anıtkabir')">
+        <img src="../assets/anıt.jpg" class="res" />
+        <div>Anıtkabir</div>
+      </div>
+      <div class="grid-item" @click="openModal('Kız Kulesi')">
+        <img src="../assets/indir.jpg" class="res" />
+        <div>Kız Kulesi</div>
+      </div>
+      <div class="grid-item" @click="openModal('Pamukkale')">
+        <img src="../assets/Pamukkale-Travertenleri.jpg" class="res" />
+        <div>Pamukkale</div>
+      </div>
+      <div class="grid-item" @click="openModal('Nemrut Dağı')">
+        <img src="../assets/indir1.jpg" class="res" />
+        <div>Nemrut Dağı</div>
+      </div>
+      <div class="grid-item" @click="openModal('Kapadokya')">
+        <img src="../assets/budget_4.png" class="res" />
+        <div>Kapadokya</div>
+      </div>
+      <div class="grid-item" @click="openModal('Peri Bacaları')">
+        <img src="../assets/urgup-three-beauties.jpg" class="res" />
+        <div>Peri Bacaları</div>
+      </div>
+    </div>
+
+    <div v-if="selectedPlace" class="modal-overlay" @click="closeModal">
+      <div class="modal" @click.stop>
+        <h2>{{ selectedPlace.name }}</h2>
+        <p>{{ selectedPlace.description }}</p>
+      </div>
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+
+const places = [
+  {
+    name: 'Anıtkabir',
+    description: 'Anıtkabir, Türkiye Cumhuriyeti\'nin kurucusu Mustafa Kemal Atatürk\'ün mozolesi ve anıt mezarıdır. Ankara\'da Atatürk Orman Çiftliği arazisinde yer alır.'
+  },
+  {
+    name: 'Kız Kulesi',
+    description: 'Kız Kulesi, İstanbul Boğazı\'nda, Üsküdar ile Salacak arasında yer alan küçük adacık üzerinde kurulu olan kulenin adıdır.'
+  },
+  {
+    name: 'Pamukkale',
+    description: 'Pamukkale, Türkiye\'nin batısında, Denizli il sınırları içinde yer alan bir turistik bölgedir. Sıcak su kaynaklarının kireç taşı teraslarını oluşturduğu doğal bir güzelliktir.'
+  },
+  {
+    name: 'Nemrut Dağı',
+    description: 'Nemrut Dağı, Adıyaman il sınırları içinde yer alan tarihî bir dağdır. Dağın zirvesindeki 2.134 metre yüksekliğindeki platoda, Kommagene Kralı Antiochos tarafından yaptırılan heykeller ve tümülüs bulunur.'
+  },
+  {
+    name: 'Kapadokya',
+    description: 'Kapadokya, Türkiye\'nin orta kesimlerinde yer alan tarihî bir bölgedir. Eşsiz kaya oluşumları, yer altı şehirleri ve peri bacalarıyla ünlüdür.'
+  },
+  {
+    name: 'Peri Bacaları',
+    description: 'Peri Bacaları, Kapadokya bölgesinde yer alan ve doğal erozyon sonucu oluşmuş kaya oluşumlarıdır. Bu oluşumlar, bölgeye özgü manzarayı oluşturan önemli unsurlardır.'
+  }
+];
+
+const selectedPlace = ref(null);
+
+const openModal = (placeName) => {
+  selectedPlace.value = places.find(place => place.name === placeName);
+};
+
+const closeModal = () => {
+  selectedPlace.value = null;
+};
+</script>
+
+
 <style scoped>
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
 .ortaa {
   width: 100%;
   height: 90%;

@@ -37,7 +37,7 @@
               placeholder="Şifreni gir"
               class="inputButton"
               v-model="password"
-              @input="checkPasswordStrength"
+              @input="validatePassword"
               @focus="showPasswordStrength"
               @blur="hidePasswordStrength"
             />
@@ -48,7 +48,8 @@
 
           <div class="textSize">
             <div class="pBottom">Tekrar Şifre</div>
-            <input type="password" placeholder="Tekrar şifreni gir" class="inputButton" />
+            <input type="password" placeholder="Tekrar şifreni gir" class="inputButton" 
+ />
           </div>
         </div>
         <div class="">
@@ -161,8 +162,7 @@ export default {
         !özelkarakter.value
       ) {
         return 'Güçlü'
-      } 
-      else {
+      } else {
         return 'Zayıf'
       }
     })
@@ -181,6 +181,12 @@ export default {
       showStrength.value = false
     }
 
+    const validatePassword = () => {
+      if (password.value.includes(' ')) {
+        password.value = password.value.replace(/\s/g, '')
+      }
+    }
+
     return {
       password,
       Yazisiniri,
@@ -192,7 +198,8 @@ export default {
       passwordStrengthClass,
       showStrength,
       showPasswordStrength,
-      hidePasswordStrength
+      hidePasswordStrength,
+      validatePassword
     }
   }
 }
