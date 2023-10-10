@@ -37,46 +37,51 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const places = [
   {
     name: 'Anıtkabir',
-    description: 'Anıtkabir, Türkiye Cumhuriyeti\'nin kurucusu Mustafa Kemal Atatürk\'ün mozolesi ve anıt mezarıdır. Ankara\'da Atatürk Orman Çiftliği arazisinde yer alır.'
+    description:
+      "Anıtkabir, Türkiye Cumhuriyeti'nin kurucusu Mustafa Kemal Atatürk'ün mozolesi ve anıt mezarıdır. Ankara'da Atatürk Orman Çiftliği arazisinde yer alır."
   },
   {
     name: 'Kız Kulesi',
-    description: 'Kız Kulesi, İstanbul Boğazı\'nda, Üsküdar ile Salacak arasında yer alan küçük adacık üzerinde kurulu olan kulenin adıdır.'
+    description:
+      "Kız Kulesi, İstanbul Boğazı'nda, Üsküdar ile Salacak arasında yer alan küçük adacık üzerinde kurulu olan kulenin adıdır."
   },
   {
     name: 'Pamukkale',
-    description: 'Pamukkale, Türkiye\'nin batısında, Denizli il sınırları içinde yer alan bir turistik bölgedir. Sıcak su kaynaklarının kireç taşı teraslarını oluşturduğu doğal bir güzelliktir.'
+    description:
+      "Pamukkale, Türkiye'nin batısında, Denizli il sınırları içinde yer alan bir turistik bölgedir. Sıcak su kaynaklarının kireç taşı teraslarını oluşturduğu doğal bir güzelliktir."
   },
   {
     name: 'Nemrut Dağı',
-    description: 'Nemrut Dağı, Adıyaman il sınırları içinde yer alan tarihî bir dağdır. Dağın zirvesindeki 2.134 metre yüksekliğindeki platoda, Kommagene Kralı Antiochos tarafından yaptırılan heykeller ve tümülüs bulunur.'
+    description:
+      'Nemrut Dağı, Adıyaman il sınırları içinde yer alan tarihî bir dağdır. Dağın zirvesindeki 2.134 metre yüksekliğindeki platoda, Kommagene Kralı Antiochos tarafından yaptırılan heykeller ve tümülüs bulunur.'
   },
   {
     name: 'Kapadokya',
-    description: 'Kapadokya, Türkiye\'nin orta kesimlerinde yer alan tarihî bir bölgedir. Eşsiz kaya oluşumları, yer altı şehirleri ve peri bacalarıyla ünlüdür.'
+    description:
+      "Kapadokya, Türkiye'nin orta kesimlerinde yer alan tarihî bir bölgedir. Eşsiz kaya oluşumları, yer altı şehirleri ve peri bacalarıyla ünlüdür."
   },
   {
     name: 'Peri Bacaları',
-    description: 'Peri Bacaları, Kapadokya bölgesinde yer alan ve doğal erozyon sonucu oluşmuş kaya oluşumlarıdır. Bu oluşumlar, bölgeye özgü manzarayı oluşturan önemli unsurlardır.'
+    description:
+      'Peri Bacaları, Kapadokya bölgesinde yer alan ve doğal erozyon sonucu oluşmuş kaya oluşumlarıdır. Bu oluşumlar, bölgeye özgü manzarayı oluşturan önemli unsurlardır.'
   }
-];
+]
 
-const selectedPlace = ref(null);
+const selectedPlace = ref(null)
 
 const openModal = (placeName) => {
-  selectedPlace.value = places.find(place => place.name === placeName);
-};
+  selectedPlace.value = places.find((place) => place.name === placeName)
+}
 
 const closeModal = () => {
-  selectedPlace.value = null;
-};
+  selectedPlace.value = null
+}
 </script>
-
 
 <style scoped>
 .modal-overlay {
@@ -85,7 +90,7 @@ const closeModal = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); 
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,31 +110,31 @@ const closeModal = () => {
 }
 .yerler {
   padding-left: 100px;
-  padding-top: 75px;  margin-left: 200px;
-
+  padding-top: 75px;
+  margin-left: 200px;
 }
-.res{
-    width: 300px;
-    height: 150px;
-    border-radius: 12px;
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3)  ;
-    animation: ressam;
+.res {
+  width: 300px;
+  height: 150px;
+  border-radius: 12px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3);
   animation-iteration-count: 1;
+  cursor: help;
   animation-duration: 2s;
 }
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
-    grid-template-rows: repeat(2, 160px); 
-    gap: 25px; 
-    justify-content: center; 
-    align-content: center; 
-    height: 500px; 
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(2, 160px);
+  gap: 25px;
+  justify-content: center;
+  align-content: center;
+  height: 500px;
 }
 
 .grid-item {
-    border:none;
-    text-align: center;
+  border: none;
+  text-align: center;
 }
 @keyframes ressam {
   1% {
@@ -137,43 +142,40 @@ const closeModal = () => {
   }
 }
 @media (max-width: 426px) {
- .res{
-  width: 92px;
-  height: 100px;
- }
- .yerler{
-  padding-top: 0;
-  margin-left: 0;
-  padding-left: 0;
-  display: flex;
-  
- }
- .grid-container {
+  .res {
+    width: 92px;
+    height: 100px;
+  }
+  .yerler {
+    padding-top: 0;
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+  }
+  .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 100px);
-    grid-template-rows: repeat(3, 125px); 
-    gap: 25px; 
-    justify-content: center; 
-    align-content: center; 
-    height: 500px; 
-}
+    grid-template-rows: repeat(3, 125px);
+    gap: 25px;
+    justify-content: center;
+    align-content: center;
+    height: 500px;
+  }
 }
 @media (max-width: 321px) {
-
-  .res{
-  width: 115px;
-  height: 100px;
- }
- .grid-container {
+  .res {
+    width: 115px;
+    height: 100px;
+  }
+  .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 125px);
-    grid-template-rows: repeat(3, 125px); 
-    gap: 25px; 
-    justify-content: center; 
-    align-content: center; 
-    height: 500px; 
+    grid-template-rows: repeat(3, 125px);
+    gap: 25px;
+    justify-content: center;
+    align-content: center;
+    height: 500px;
     margin-left: 50px;
+  }
 }
-}
-
 </style>

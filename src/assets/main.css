@@ -3,8 +3,8 @@
   margin: 0;
   box-sizing: border-box;
   color: black;
-  font-family: 'Comfortaa', cursive;
   text-decoration: none;
+ background-repeat: no-repeat;
 }
 .image {
   width: 100%;
@@ -19,13 +19,13 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .orta { 
-  flex-direction: column;   
+  .orta {
+    flex-direction: column;
   }
-  .orta .soll{
-    width: 100% ;
+  .orta .soll {
+    width: 100%;
   }
-  .image{
+  .image {
     display: none;
   }
 }

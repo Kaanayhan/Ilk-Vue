@@ -16,9 +16,20 @@
   <div v-if="selectedCountry" class="modal-overlay" @click="closeModal">
     <div class="modal">
       <div class="modal-content">
-        <h2>{{ selectedCountry.name.common }}</h2>
-        <div class="country-image">
-          <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
+        <h1 style="text-align: center">{{ selectedCountry.name.common }}</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center">
+          <div class="country-image">
+            <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
+          </div>
+          <div
+            v-for="weatherType in filteredWeatherTypes"
+            :key="weatherType.code"
+            style="height: 50px; align-self: end"
+          >
+            <div style="display: flex">
+              <i :class="weatherType.icon"></i>{{ weatherType.label }}
+            </div>
+          </div>
         </div>
         <div class="country-map"></div>
         <p>Başkent: {{ selectedCountry.capital?.[0] }}</p>
@@ -40,37 +51,18 @@
           >premium bootstrap themes</a
         >
       </div>
-      <a
-        target="_blank"
-        :href="selectedCountry.maps.googleMaps"
-        alt="Harita"
-        class="map-icon"
-        style="color: darkblue"
-        >Haritada Göster
-      </a>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { WeatherConstants } from '../../public/constants/weather-constants'
 
 const countryList = ref([])
 const selectedCountry = ref(null)
 const weatherCode = ref(0)
-navigator.geolocation.getCurrentPosition((position) => {
-  console.log(position, 'position')
 
-  fetch(
-    'https://api.open-meteo.com/v1/forecast?latitude=' +
-      position.coords.latitude +
-      '&longitude=' +
-      position.coords.longitude +
-      '&current_weather=true'
-  )
-    .then((res) => res.json())
-    .then((data) => (weatherCode.value = data.current_weather.weathercode))
-})
 onMounted(() => {
   fetch('https://restcountries.com/v3.1/all')
     .then((res) => res.json())
@@ -99,20 +91,46 @@ onMounted(() => {
 
 const openModal = (country) => {
   selectedCountry.value = country
-}
 
+  const latitude = country.latlng[0]
+  const longitude = country.latlng[1]
+
+  fetchWeatherData(latitude, longitude)
+}
 
 const closeModal = () => {
   selectedCountry.value = null
 }
+
+const fetchWeatherData = (latitude, longitude) => {
+  fetch(
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
+  )
+    .then((res) => res.json())
+    .then((data) => (weatherCode.value = data.current_weather.weathercode))
+}
+
+const filteredWeatherTypes = computed(() => {
+  return WeatherConstants.filter((weatherType) => {
+    if (Array.isArray(weatherType.code)) {
+      return weatherType.code.includes(weatherCode.value)
+    }
+    return weatherType.code === weatherCode.value
+  }).map((weatherType) => {
+    return {
+      code: weatherType.code,
+      label: weatherType.label,
+      icon: weatherType.icon
+    }
+  })
+})
 </script>
 <style scoped>
 .search-container {
   margin-top: 1%;
   margin-bottom: 20px;
 }
-#my-map-display .text-marker {
-}
+
 .map-generator {
   max-width: 100%;
   max-height: 100%;
@@ -149,8 +167,7 @@ const closeModal = () => {
   height: 200px;
 }
 .country-flag {
-  width: 100px;
-  height: auto;
+  width: 125px;
 }
 
 .flag-icon {
@@ -178,6 +195,14 @@ const closeModal = () => {
   max-width: 80%;
   width: 400px;
   text-align: left;
+}
+.map-icon {
+  color: darkblue;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  padding-top: 3%;
+  font-size: 24px;
 }
 
 .close {
