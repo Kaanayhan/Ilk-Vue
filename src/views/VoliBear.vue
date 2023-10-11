@@ -2,11 +2,10 @@
   <div class="mid">
     <div class="left">
       <div class="text">
-        <h1>Welcome,</h1>
-        I am Ramon,a product designer from Barcelona <br />
-        currently working with <span class="textcolor"> Red Bull </span> and teaching design at<br />
-        <span class="textcolor">SketchCasts.</span> In the past,I've worked for clients such as<br />
-        Varner and Intersport.
+        <h1>Merhaba,</h1>
+
+        Ben Kaan, Türkiye'den bir yazılımcıyım <br />
+        şu anda stajyerlik yapıyorum <span class="textcolor"> intime </span> ofisinde<br />
       </div>
     </div>
     <div class="right">
@@ -75,7 +74,6 @@
   }
 }
 @media (max-width: 321px) {
-
   .img {
     position: absolute;
     bottom: 0px;

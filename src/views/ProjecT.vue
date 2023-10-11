@@ -119,7 +119,7 @@ const closeModal = () => {
   border-radius: 12px;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3);
   animation-iteration-count: 1;
-  cursor: help;
+  cursor: pointer;
   animation-duration: 2s;
 }
 .grid-container {

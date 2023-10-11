@@ -4,7 +4,8 @@
   box-sizing: border-box;
   color: black;
   text-decoration: none;
- background-repeat: no-repeat;
+  font-family: 'Ubuntu', sans-serif;
+  background-repeat: no-repeat;
 }
 .image {
   width: 100%;

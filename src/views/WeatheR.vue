@@ -9,47 +9,49 @@
       class="grid-item"
       @click="openModal(country)"
     >
-      <div class=""><img :src="country.flag" alt="Bayrak" class="flag-icon" /></div>
-      <div class="">{{ country.name.common }}</div>
+      <div><img :src="country.flag" alt="Bayrak" class="flag-icon" /></div>
+      <div>{{ country.translations.tur.common }}</div>
     </div>
   </div>
   <div v-if="selectedCountry" class="modal-overlay" @click="closeModal">
-    <div class="modal">
-      <div class="modal-content">
-        <h1 style="text-align: center">{{ selectedCountry.name.common }}</h1>
-        <div style="display: flex; justify-content: space-between; align-items: center">
-          <div class="country-image">
-            <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
-          </div>
-          <div
-            v-for="weatherType in filteredWeatherTypes"
-            :key="weatherType.code"
-            style="height: 50px; align-self: end"
-          >
-            <div style="display: flex">
+    <div class="modal" @click.stop>
+      <h1 style="text-align: center; margin-bottom: 2.5%; font-size: 48px;">
+        {{ selectedCountry.translations.tur.common }}
+        <span class="close" @click="closeModal">&times;</span>
+      </h1>
+      <div class="modalflex">
+        <div class="modal-content">
+          <div>
+            <div class="country-image">
+              <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
+            </div>
+            <div v-for="weatherType in filteredWeatherTypes" :key="weatherType.code">
               <i :class="weatherType.icon"></i>{{ weatherType.label }}
             </div>
           </div>
+          <p>Başkent: {{ selectedCountry.capital?.[0] }}</p>
+          <p>Nüfus: {{ selectedCountry.population }}</p>
+          <p>Bölge: {{ selectedCountry.region }}</p>
+          <p>Para birimi: {{ selectedCountryCurrency.name }}</p>
+          <p>Para sembolü: {{ selectedCountryCurrency.symbol }}</p>
+          <p>Dil: {{ selectedCountrylanguages.languages.join(', ') }}</p>
         </div>
-        <div class="country-map"></div>
-        <p>Başkent: {{ selectedCountry.capital?.[0] }}</p>
-        <p>Nüfus: {{ selectedCountry.population }}</p>
-        <p>Bölge: {{ selectedCountry.region }}</p>
-      </div>
-      <div style="max-width: 100%; overflow: hidden; color: red; width: 500px; height: 500px">
-        <div id="my-map-display" style="height: 100%; width: 100%; max-width: 100%">
-          <iframe
-            style="height: 100%; width: 100%; border: 0"
-            frameborder="0"
-            :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.name.common}+country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
-          ></iframe>
+        <div class="">
+          <div style="max-width: 100%; overflow: hidden; color: red; width: 500px; height: 500px">
+            <div id="my-map-display" style="height: 100%; width: 100%; max-width: 100%">
+              <iframe
+                style="height: 100%; width: 100%; border: 0"
+                frameborder="0"
+                :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}+country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
+              ></iframe>
+            </div>
+          </div>
+          <a
+            class="embedded-map-code"
+            href="https://www.bootstrapskins.com/themes"
+            id="get-data-for-embed-map"
+          ></a>
         </div>
-        <a
-          class="embedded-map-code"
-          href="https://www.bootstrapskins.com/themes"
-          id="get-data-for-embed-map"
-          >premium bootstrap themes</a
-        >
       </div>
     </div>
   </div>
@@ -62,6 +64,8 @@ import { WeatherConstants } from '../../public/constants/weather-constants'
 const countryList = ref([])
 const selectedCountry = ref(null)
 const weatherCode = ref(0)
+const selectedCountryCurrency = ref({})
+const selectedCountrylanguages = ref({})
 
 onMounted(() => {
   fetch('https://restcountries.com/v3.1/all')
@@ -71,13 +75,14 @@ onMounted(() => {
         return {
           ...country,
           flag: country.flags?.png || 'YOK',
-          maps: country.maps || 'YOK'
+          maps: country.maps || 'YOK',
+          name: country.name.common
         }
       })
 
       countryList.value.sort((a, b) => {
-        const nameA = a.name.common.toUpperCase()
-        const nameB = b.name.common.toUpperCase()
+        const nameA = a.name.toUpperCase()
+        const nameB = b.name.toUpperCase()
         if (nameA < nameB) {
           return -1
         }
@@ -91,11 +96,56 @@ onMounted(() => {
 
 const openModal = (country) => {
   selectedCountry.value = country
+  const { latitude, longitude } = enlemBoylamGoster(country)
 
+  getCurrency(country)
+  getLanguages(country)
+
+  fetchWeatherData(latitude, longitude)
+}
+const enlemBoylamGoster = (country) => {
   const latitude = country.latlng[0]
   const longitude = country.latlng[1]
 
-  fetchWeatherData(latitude, longitude)
+  return {
+    latitude,
+    longitude
+  }
+}
+const getCurrency = (country) => {
+  const currency = country.currencies
+  if (currency) {
+    const firstCurrency = Object.values(currency)[0]
+
+    selectedCountryCurrency.value = {
+      name: firstCurrency.name,
+      symbol: firstCurrency.symbol
+    }
+  } else {
+    selectedCountryCurrency.value = {
+      name: 'Bilgi Yok',
+      symbol: 'Bilgi Yok'
+    }
+  }
+  return {
+    currency
+  }
+}
+const getLanguages = (country) => {
+  const languages = country.languages
+  console.log(languages)
+  if (languages && Object.keys(languages).length > 0) {
+    const firstLanguageKey = Object.keys(languages)[0]
+    const firstLanguage = languages[firstLanguageKey]
+
+    selectedCountrylanguages.value = {
+      languages: [firstLanguage]
+    }
+  } else {
+    selectedCountrylanguages.value = {
+      languages: ['Bilgi Yok']
+    }
+  }
 }
 
 const closeModal = () => {
@@ -130,7 +180,13 @@ const filteredWeatherTypes = computed(() => {
   margin-top: 1%;
   margin-bottom: 20px;
 }
-
+.modalflex {
+  display: flex;
+  justify-content: space-around;
+}
+i {
+  margin-right: 2%;
+}
 .map-generator {
   max-width: 100%;
   max-height: 100%;
@@ -142,6 +198,9 @@ const filteredWeatherTypes = computed(() => {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+p {
+  margin-top: 4%;
 }
 
 .grid-container {
@@ -167,7 +226,9 @@ const filteredWeatherTypes = computed(() => {
   height: 200px;
 }
 .country-flag {
-  width: 125px;
+  margin-bottom: 7%;
+  width: 250px;
+  height: 125px;
 }
 
 .flag-icon {
@@ -188,12 +249,12 @@ const filteredWeatherTypes = computed(() => {
 }
 
 .modal {
-  background: lightgray;
+  background-image: linear-gradient(90deg, lightgray, darkgray);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   max-width: 80%;
-  width: 400px;
+  width: 800px;
   text-align: left;
 }
 .map-icon {
@@ -201,20 +262,20 @@ const filteredWeatherTypes = computed(() => {
   text-align: center;
   display: inline-block;
   width: 100%;
-  padding-top: 3%;
   font-size: 24px;
 }
 
 .close {
-  color: #aaa;
+  color: white;
   float: right;
-  font-size: 24px;
+  font-size: 40px;
+  margin-right: 1%;
   cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: red;
   text-decoration: none;
 }
 </style>
