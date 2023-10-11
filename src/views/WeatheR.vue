@@ -1,10 +1,10 @@
 <template>
   <div class="search-container">
-    <input type="text" id="search-bar" placeholder="Ülke ara..." />
+    <input type="text" id="search-bar" v-model="searchKeyword" placeholder="Ülke ara..." />
   </div>
   <div class="grid-container">
     <div
-      v-for="(country, index) in countryList"
+      v-for="(country, index) in filteredCountries"
       :key="index"
       class="grid-item"
       @click="openModal(country)"
@@ -42,8 +42,7 @@
               <iframe
                 style="height: 100%; width: 100%; border: 0"
                 frameborder="0"
-                :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}+country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
-              ></iframe>
+                :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}+country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"              ></iframe>
             </div>
           </div>
           <a
@@ -58,14 +57,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { WeatherConstants } from '../../public/constants/weather-constants'
+import { ref, onMounted, computed } from 'vue';
+import { WeatherConstants } from '../../public/constants/weather-constants';
 
-const countryList = ref([])
-const selectedCountry = ref(null)
-const weatherCode = ref(0)
-const selectedCountryCurrency = ref({})
-const selectedCountrylanguages = ref({})
+const countryList = ref([]);
+const selectedCountry = ref(null);
+const weatherCode = ref(0);
+const selectedCountryCurrency = ref({});
+const selectedCountrylanguages = ref({});
+const searchKeyword = ref('');
 
 onMounted(() => {
   fetch('https://restcountries.com/v3.1/all')
@@ -76,104 +76,111 @@ onMounted(() => {
           ...country,
           flag: country.flags?.png || 'YOK',
           maps: country.maps || 'YOK',
-          name: country.name.common
-        }
-      })
+          name: country.translations.tur.common
+        };
+      });
 
       countryList.value.sort((a, b) => {
-        const nameA = a.name.toUpperCase()
-        const nameB = b.name.toUpperCase()
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
         if (nameA < nameB) {
-          return -1
+          return -1;
         }
         if (nameA > nameB) {
-          return 1
+          return 1;
         }
-        return 0
-      })
-    })
-})
-
+        return 0;
+      });
+    });
+});
+const filteredCountries = computed(() => {
+  return countryList.value.filter(country => {
+    return country.name.toLowerCase().startsWith(searchKeyword.value.toLowerCase());
+  });
+});
 const openModal = (country) => {
-  selectedCountry.value = country
-  const { latitude, longitude } = enlemBoylamGoster(country)
+  selectedCountry.value = country;
+  const { latitude, longitude } = enlemBoylamGoster(country);
 
-  getCurrency(country)
-  getLanguages(country)
+  getCurrency(country);
+  getLanguages(country);
 
-  fetchWeatherData(latitude, longitude)
-}
+  fetchWeatherData(latitude, longitude);
+};
+
 const enlemBoylamGoster = (country) => {
-  const latitude = country.latlng[0]
-  const longitude = country.latlng[1]
+  const latitude = country.latlng[0];
+  const longitude = country.latlng[1];
 
   return {
     latitude,
     longitude
-  }
-}
+  };
+};
+
 const getCurrency = (country) => {
-  const currency = country.currencies
+  const currency = country.currencies;
   if (currency) {
-    const firstCurrency = Object.values(currency)[0]
+    const firstCurrency = Object.values(currency)[0];
 
     selectedCountryCurrency.value = {
       name: firstCurrency.name,
       symbol: firstCurrency.symbol
-    }
+    };
   } else {
     selectedCountryCurrency.value = {
       name: 'Bilgi Yok',
       symbol: 'Bilgi Yok'
-    }
+    };
   }
   return {
     currency
-  }
-}
+  };
+};
+
 const getLanguages = (country) => {
-  const languages = country.languages
-  console.log(languages)
+  const languages = country.languages;
   if (languages && Object.keys(languages).length > 0) {
-    const firstLanguageKey = Object.keys(languages)[0]
-    const firstLanguage = languages[firstLanguageKey]
+    const firstLanguageKey = Object.keys(languages)[0];
+    const firstLanguage = languages[firstLanguageKey];
 
     selectedCountrylanguages.value = {
       languages: [firstLanguage]
-    }
+    };
   } else {
     selectedCountrylanguages.value = {
       languages: ['Bilgi Yok']
-    }
+    };
   }
-}
+};
 
 const closeModal = () => {
-  selectedCountry.value = null
-}
+  selectedCountry.value = null;
+};
 
 const fetchWeatherData = (latitude, longitude) => {
   fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
   )
     .then((res) => res.json())
-    .then((data) => (weatherCode.value = data.current_weather.weathercode))
-}
+    .then((data) => (weatherCode.value = data.current_weather.weathercode));
+};
 
 const filteredWeatherTypes = computed(() => {
   return WeatherConstants.filter((weatherType) => {
     if (Array.isArray(weatherType.code)) {
-      return weatherType.code.includes(weatherCode.value)
+      return weatherType.code.includes(weatherCode.value);
     }
-    return weatherType.code === weatherCode.value
+    return weatherType.code === weatherCode.value;
   }).map((weatherType) => {
     return {
       code: weatherType.code,
       label: weatherType.label,
       icon: weatherType.icon
-    }
-  })
-})
+    };
+  });
+});
+
 </script>
 <style scoped>
 .search-container {
@@ -227,8 +234,8 @@ p {
 }
 .country-flag {
   margin-bottom: 7%;
-  width: 250px;
-  height: 125px;
+  width: 230px;
+  height: 115px;
 }
 
 .flag-icon {
