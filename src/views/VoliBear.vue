@@ -2,11 +2,12 @@
   <div class="mid">
     <div class="left">
       <div class="text">
-        <h1>Merhaba,</h1>
+        <h1>Welcome,</h1>
 
-        Merhaba Merhaba Merhaba Merhaba  <br />
-        Merhaba Merhaba Merhaba<span class="textcolor"> Merhaba </span> <br />
-        Merhaba Merhaba Merhaba Merhaba
+        <p>
+          I am Kaan, a product designer from Turkey currently working with intime Merhaba Merhaba
+          Merhaba 
+        </p>
       </div>
     </div>
     <div class="right">
@@ -15,6 +16,9 @@
   </div>
 </template>
 <style scoped>
+p{
+  text-align: left;
+}
 .img {
   width: 100%;
   height: 120%;

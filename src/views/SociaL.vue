@@ -34,12 +34,12 @@
     <div class="right">
       <div class="center">
         <h1 class="title">Bize Katılın</h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
+     <p>  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
         perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque
         iste! Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet
         consectetur adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti
         consectetur atque, vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto
-        amet minus
+        amet minus</p> 
       </div>
     </div>
   </div>
@@ -129,15 +129,15 @@
 }
 @media (max-width: 767px) {
   .mid {
-    flex-direction: column; /* Stack elements vertically on smaller screens */
+    flex-direction: column; 
   }
   .left {
-    width: 100%; /* Full width for left column on mobile */
-    padding: 20px; /* Adjust padding for mobile */
+    width: 100%; 
+    padding: 20px;
   }
   .right {
-    width: 100%; /* Full width for right column on mobile */
-    padding: 20px; /* Adjust padding for mobile */
+    width: 100%;
+    padding: 20px; 
   }
 }
 </style>

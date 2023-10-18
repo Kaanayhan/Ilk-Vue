@@ -14,3 +14,6 @@
   animation-iteration-count: 1;
   animation-duration: 2s;
 }
+.darkmode-layer, .darkmode-toggle {
+  z-index: 1;
+}

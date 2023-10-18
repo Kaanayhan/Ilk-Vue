@@ -94,6 +94,9 @@ onMounted(() => {
       })
     })
 })
+const modalClick = (event) => {
+  event.stopPropagation()
+}
 const filteredCountries = computed(() => {
   return countryList.value.filter((country) => {
     return country.name.toLowerCase().startsWith(searchKeyword.value.toLowerCase())
@@ -107,6 +110,8 @@ const openModal = (country) => {
   getLanguages(country)
 
   fetchWeatherData(latitude, longitude)
+  const modalElement = document.querySelector('.modal')
+  modalElement.addEventListener('click', modalClick)
 }
 
 const enlemBoylamGoster = (country) => {
@@ -154,9 +159,14 @@ const getLanguages = (country) => {
     }
   }
 }
+const modalOverlayClick = (event) => {
+  event.stopPropagation()
+}
 
 const closeModal = () => {
   selectedCountry.value = null
+  const modalOverlay = document.querySelector('.modal-overlay')
+  modalOverlay.removeEventListener('click', modalOverlayClick)
 }
 
 const fetchWeatherData = (latitude, longitude) => {
@@ -271,6 +281,31 @@ p {
 @media (max-width: 767px) {
   #search-bar {
     width: 85%;
+  }
+  .modal {
+    background-image: linear-gradient(90deg, lightgray, darkgray);
+    padding: 4vw;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    width: 90vw;
+    max-width: 400px;
+    text-align: left;
+  }
+
+  .close {
+    color: white;
+    float: right;
+    font-size: 6vw;
+    margin-right: 2vw;
+    cursor: pointer;
+  }
+
+  .embedded-map-code {
+    font-size: 4vw;
+    margin-top: 2vw;
+  }
+  .modalflex {
+    flex-direction: column;
   }
 }
 </style>

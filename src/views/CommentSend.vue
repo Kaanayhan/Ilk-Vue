@@ -105,7 +105,7 @@ const viewComment = () => {
         <div v-if="yorumUyari" class="error">Lütfen yorum alanını doldurunuz.</div>
       </div>
       <div>
-        <div style="display: flex">
+        <div class="butonlar" style="display: flex">
           <button class="comment" @click="commentSubmit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -278,5 +278,57 @@ svg {
   padding: 12px 15px 0 10px;
   resize: none;
   height: 170px;
+}
+@media (max-width: 767px) {
+  .giriss,
+  .adsoyad,
+  .adsoyadyorum,
+  .title,
+  .yorum,
+  .error,
+  .yorumbutonlari,
+  .comment,
+  .commentinfo,
+  .gönder {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .title {
+    text-align: center;
+  }
+  .giriss {
+    margin-left: 5%;
+  }
+  .yorumbutonlari {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .comment,
+  .commentinfo {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+  .giriss {
+    width: 90%;
+  }
+  .gönder {
+    width: 100%;
+  }
+  .yorum {
+    height: 600px;
+  }
+  .butonlar {
+    display: flex;
+    flex-direction: column;
+  }
+  .yorumbutonlari {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .view {
+    margin-top: 100px;
+  }
 }
 </style>

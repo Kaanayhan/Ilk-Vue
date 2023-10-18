@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="menu-btn" @click="toggleMenu">
-      <i v-if="!menuOpen" class="fa-solid fa-bars fa-2xl" style="color: #000000"></i>
-      <i v-else class="fa-solid fa-times fa-2xl" style="color: #000000"></i>
+      <i v-if="!menuOpen" class="fa-solid fa-bars fa-2xl" style="color: blue"></i>
+      <i v-else class="fa-solid fa-times fa-2xl" style="color: "></i>
     </div>
     <div class="top">
       <div class="logo">
