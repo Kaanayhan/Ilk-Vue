@@ -141,28 +141,8 @@ const closeModal = () => {
     opacity: 0;
   }
 }
-@media (max-width: 426px) {
-  .res {
-    width: 92px;
-    height: 100px;
-  }
-  .yerler {
-    padding-top: 0;
-    margin-left: 0;
-    padding-left: 0;
-    display: flex;
-  }
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 100px);
-    grid-template-rows: repeat(3, 125px);
-    gap: 25px;
-    justify-content: center;
-    align-content: center;
-    height: 500px;
-  }
-}
-@media (max-width: 321px) {
+
+@media (max-width: 767px) {
   .res {
     width: 115px;
     height: 100px;
@@ -175,7 +155,8 @@ const closeModal = () => {
     justify-content: center;
     align-content: center;
     height: 500px;
-    margin-left: 50px;
+    margin-left: 20px;
+    margin-top: 75px;
   }
 }
 </style>

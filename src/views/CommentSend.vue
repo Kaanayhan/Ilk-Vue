@@ -185,23 +185,23 @@ svg {
   display: inline-block;
 }
 .adsoyadyorum {
-  margin: 30px 0 0 35px;
+  margin: 15px 0 0 35px;
 }
 .title {
-  margin-top: 25px;
+  margin-top: 10px;
   padding-top: 20px;
   margin-left: 275px;
   margin-bottom: 10px;
 }
 .yorum {
-  height: 590px;
+  height: 78.5vb;
   width: 50%;
   background-color: rgb(227, 242, 253);
   margin: 0px auto;
 }
 .error {
   color: red;
-  margin-top: 3px;
+  margin-top: 2px;
   margin-left: 35px;
 }
 
@@ -255,7 +255,7 @@ svg {
   align-items: center;
 }
 .delete {
-  margin-left: 325px;
+  margin-left: 275px;
 }
 .comment:active {
   background-color: #3e8e41;
@@ -277,6 +277,6 @@ svg {
   border: 1px solid #ccc;
   padding: 12px 15px 0 10px;
   resize: none;
-  height: 200px;
+  height: 170px;
 }
 </style>

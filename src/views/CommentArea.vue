@@ -49,7 +49,7 @@ const sendComment = () => {
 .yorumm {
   padding: 20px;
   width: 75%;
-  height: 510px;
+  height: 365px;
   margin: 0 auto;
   overflow: auto;
   background-color: lightgray;
@@ -101,5 +101,73 @@ svg {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+@media (max-width: 767px) {
+  .yorumm {
+  padding: 10px;
+  width: 100%; 
+  height: 525px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: lightgray;
+}
+
+.isim {
+  margin-top: 21px;
+}
+
+.date {
+  margin-top: 10px;
+  text-align: end;
+}
+
+hr {
+  width: 20%; 
+  margin: 10px auto;
+  height: 3px;
+  background-color: black;
+}
+
+.alinanyorum {
+  background-color: white;
+  word-wrap: break-word;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.sendComment {
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 15px 20px; 
+  font-size: 18px; 
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 25px; 
+  box-shadow: 0 5px #666; 
+  width: 80%; 
+  max-width: 300px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+svg {
+  fill: #ffffff;
+  margin-right: 5px;
+}
+
+.sendComment:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+  
 }
 </style>

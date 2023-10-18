@@ -48,49 +48,72 @@
 
           <div class="textSize">
             <div class="pBottom">Tekrar Şifre</div>
-            <input type="password" placeholder="Tekrar şifreni gir" class="inputButton" 
- />
+            <input type="password" placeholder="Tekrar şifreni gir" class="inputButton" />
           </div>
         </div>
         <div class="">
           <div class="password-validation">
             <div class="password-validation-item">
-              <i class="fa fa-times" style="font-size: 24px; color: red" v-if="Yazisiniri"></i>
+              <i
+                class="fa fa-times"
+                style="font-size: 12px; margin-top: 1%; color: red"
+                v-if="Yazisiniri"
+              ></i>
               <i
                 class="fa fa-check"
-                style="font-size: 24px; color: green"
+                style="font-size: 12px; margin-top: 1%; color: green"
                 v-if="Yazisiniri === ''"
               ></i>
               Yazı Sınırı 8 olmalı
             </div>
             <div class="password-validation-item">
-              <i class="fa fa-times" style="font-size: 24px; color: red" v-if="büyükharf"></i>
+              <i
+                class="fa fa-times"
+                style="font-size: 12px; margin-top: 1%; color: red"
+                v-if="büyükharf"
+              ></i>
               <i
                 class="fa fa-check"
-                style="font-size: 24px; color: green"
+                style="font-size: 12px; margin-top: 1%; color: green"
                 v-if="büyükharf === ''"
               ></i>
               Büyük harf giriniz
             </div>
             <div class="password-validation-item">
-              <i class="fa fa-times" style="font-size: 24px; color: red" v-if="kücükharf"></i>
+              <i
+                class="fa fa-times"
+                style="font-size: 12px; margin-top: 1%; color: red"
+                v-if="kücükharf"
+              ></i>
               <i
                 class="fa fa-check"
-                style="font-size: 24px; color: green"
+                style="font-size: 12px; margin-top: 1%; color: green"
                 v-if="kücükharf === ''"
               ></i>
               Küçük harf giriniz
             </div>
             <div class="password-validation-item">
-              <i class="fa fa-times" style="font-size: 24px; color: red" v-if="sayi"></i>
-              <i class="fa fa-check" style="font-size: 24px; color: green" v-if="sayi === ''"></i>
+              <i
+                class="fa fa-times"
+                style="font-size: 12px; margin-top: 1%; color: red"
+                v-if="sayi"
+              ></i>
+              <i
+                class="fa fa-check"
+                style="font-size: 12px; margin-top: 1%; color: green"
+                v-if="sayi === ''"
+              ></i>
               Sayı giriniz
             </div>
             <div class="password-validation-item">
-              <i class="fa fa-times" style="font-size: 24px; color: red" v-if="özelkarakter"></i>
+              <i
+                class="fa fa-times"
+                style="font-size: 12px; margin-top: 1%; color: red"
+                v-if="özelkarakter"
+              ></i>
               <i
                 class="fa fa-check"
-                style="font-size: 24px; color: green"
+                style="font-size: 12px; margin-top: 1%; color: green"
                 v-if="özelkarakter === ''"
               ></i>
               Özel karakter giriniz
@@ -153,34 +176,6 @@ export default {
       return ''
     })
 
-    const passwordStrength = computed(() => {
-      if (
-        !Yazisiniri.value &&
-        !büyükharf.value &&
-        !kücükharf.value &&
-        !sayi.value &&
-        !özelkarakter.value
-      ) {
-        return 'Güçlü'
-      } else {
-        return 'Zayıf'
-      }
-    })
-
-    const passwordStrengthClass = computed(() => {
-      return passwordStrength.value === 'Güçlü' ? 'strong' : 'weak'
-    })
-
-    const showStrength = ref(false)
-
-    const showPasswordStrength = () => {
-      showStrength.value = true
-    }
-
-    const hidePasswordStrength = () => {
-      showStrength.value = false
-    }
-
     const validatePassword = () => {
       if (password.value.includes(' ')) {
         password.value = password.value.replace(/\s/g, '')
@@ -194,11 +189,6 @@ export default {
       kücükharf,
       sayi,
       özelkarakter,
-      passwordStrength,
-      passwordStrengthClass,
-      showStrength,
-      showPasswordStrength,
-      hidePasswordStrength,
       validatePassword
     }
   }
@@ -207,7 +197,7 @@ export default {
 
 <style scoped>
 .buttonn {
-  margin-top: 33px;
+  margin-top: 5px;
   color: white;
   width: 100%;
   height: 35px;
@@ -223,14 +213,13 @@ export default {
 .bar {
   height: 25px;
   width: 100%;
-  margin-top: 20px;
   display: flex;
 }
 .radyolar {
   display: flex;
 }
 .radioo {
-  margin-left: 274px;
+  margin-left: 250px;
 }
 .sal {
   width: 100%;
@@ -272,63 +261,36 @@ export default {
   border: none;
   padding: 10px;
 }
-.password-strength {
-  font-size: medium;
-  padding-right: 310px;
-  padding-top: 35px;
-}
-
-.weak {
-  color: red;
-}
-
-.medium {
-  color: orange;
-}
-
-.strong {
-  color: green;
-}
 .password-check {
   font-size: 1.5em;
   margin-left: 5px;
 }
-@media (max-width: 426px) {
-  .entrance {
-    padding-top: 0;
+@media (max-width: 768px) {
+  .pBottom {
+    margin-top: 10px;
   }
   .registerForm {
-    margin-left: 12.5px;
+    width: 90%;
+    margin-left: 5%;
+  }
+  .frame {
+    flex-direction: column;
+    margin-bottom: 75px;
+  }
+  .radioo {
+    margin-left: 0;
+  }
+  .buttonn {
+    width: 90%;
   }
   .textSize {
     font-size: medium;
   }
   .inputButton {
-    width: 190px;
-    margin-right: 14px;
+    width: 100%;
   }
-  .buttonn {
-    width: 400px;
-    height: 33px;
-  }
-  .radioo {
-    margin-left: 110px;
-  }
-}
-@media (max-width: 321px) {
-  .textSize {
-    font-size: medium;
-  }
-  .inputButton {
-    width: 175px;
-    margin-right: 15px;
-  }
-  .buttonn {
-    width: 375px;
-    height: 33px;
-  }
-  .radioo {
-    margin-left: 95px;
+  .radyolar {
+    flex-direction: column;
   }
 }
 </style>

@@ -15,7 +15,7 @@
   </div>
   <div v-if="selectedCountry" class="modal-overlay" @click="closeModal">
     <div class="modal" @click.stop>
-      <h1 style="text-align: center; margin-bottom: 2.5%; font-size: 48px;">
+      <h1 style="text-align: center; margin-bottom: 2.5%; font-size: 48px">
         {{ selectedCountry.translations.tur.common }}
         <span class="close" @click="closeModal">&times;</span>
       </h1>
@@ -42,7 +42,8 @@
               <iframe
                 style="height: 100%; width: 100%; border: 0"
                 frameborder="0"
-                :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}+country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"              ></iframe>
+                :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}Country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
+              ></iframe>
             </div>
           </div>
           <a
@@ -57,15 +58,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import { WeatherConstants } from '../../public/constants/weather-constants';
+import { ref, onMounted, computed } from 'vue'
+import { WeatherConstants } from '../../public/constants/weather-constants'
 
-const countryList = ref([]);
-const selectedCountry = ref(null);
-const weatherCode = ref(0);
-const selectedCountryCurrency = ref({});
-const selectedCountrylanguages = ref({});
-const searchKeyword = ref('');
+const countryList = ref([])
+const selectedCountry = ref(null)
+const weatherCode = ref(0)
+const selectedCountryCurrency = ref({})
+const selectedCountrylanguages = ref({})
+const searchKeyword = ref('')
 
 onMounted(() => {
   fetch('https://restcountries.com/v3.1/all')
@@ -77,110 +78,109 @@ onMounted(() => {
           flag: country.flags?.png || 'YOK',
           maps: country.maps || 'YOK',
           name: country.translations.tur.common
-        };
-      });
+        }
+      })
 
       countryList.value.sort((a, b) => {
-        const nameA = a.name.toUpperCase();
-        const nameB = b.name.toUpperCase();
+        const nameA = a.name.toUpperCase()
+        const nameB = b.name.toUpperCase()
         if (nameA < nameB) {
-          return -1;
+          return -1
         }
         if (nameA > nameB) {
-          return 1;
+          return 1
         }
-        return 0;
-      });
-    });
-});
+        return 0
+      })
+    })
+})
 const filteredCountries = computed(() => {
-  return countryList.value.filter(country => {
-    return country.name.toLowerCase().startsWith(searchKeyword.value.toLowerCase());
-  });
-});
+  return countryList.value.filter((country) => {
+    return country.name.toLowerCase().startsWith(searchKeyword.value.toLowerCase())
+  })
+})
 const openModal = (country) => {
-  selectedCountry.value = country;
-  const { latitude, longitude } = enlemBoylamGoster(country);
+  selectedCountry.value = country
+  const { latitude, longitude } = enlemBoylamGoster(country)
 
-  getCurrency(country);
-  getLanguages(country);
+  getCurrency(country)
+  getLanguages(country)
 
-  fetchWeatherData(latitude, longitude);
-};
+  fetchWeatherData(latitude, longitude)
+}
 
 const enlemBoylamGoster = (country) => {
-  const latitude = country.latlng[0];
-  const longitude = country.latlng[1];
+  const latitude = country.latlng[0]
+  const longitude = country.latlng[1]
 
   return {
     latitude,
     longitude
-  };
-};
+  }
+}
 
 const getCurrency = (country) => {
-  const currency = country.currencies;
+  const currency = country.currencies
   if (currency) {
-    const firstCurrency = Object.values(currency)[0];
+    const firstCurrency = Object.values(currency)[0]
 
     selectedCountryCurrency.value = {
       name: firstCurrency.name,
       symbol: firstCurrency.symbol
-    };
+    }
   } else {
     selectedCountryCurrency.value = {
       name: 'Bilgi Yok',
       symbol: 'Bilgi Yok'
-    };
+    }
   }
   return {
     currency
-  };
-};
+  }
+}
 
 const getLanguages = (country) => {
-  const languages = country.languages;
+  const languages = country.languages
   if (languages && Object.keys(languages).length > 0) {
-    const firstLanguageKey = Object.keys(languages)[0];
-    const firstLanguage = languages[firstLanguageKey];
+    const firstLanguageKey = Object.keys(languages)[0]
+    const firstLanguage = languages[firstLanguageKey]
 
     selectedCountrylanguages.value = {
       languages: [firstLanguage]
-    };
+    }
   } else {
     selectedCountrylanguages.value = {
       languages: ['Bilgi Yok']
-    };
+    }
   }
-};
+}
 
 const closeModal = () => {
-  selectedCountry.value = null;
-};
+  selectedCountry.value = null
+}
 
 const fetchWeatherData = (latitude, longitude) => {
   fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
   )
     .then((res) => res.json())
-    .then((data) => (weatherCode.value = data.current_weather.weathercode));
-};
+    .then((data) => (weatherCode.value = data.current_weather.weathercode))
+}
 
 const filteredWeatherTypes = computed(() => {
   return WeatherConstants.filter((weatherType) => {
     if (Array.isArray(weatherType.code)) {
-      return weatherType.code.includes(weatherCode.value);
+      return weatherType.code.includes(weatherCode.value)
     }
-    return weatherType.code === weatherCode.value;
+    return weatherType.code === weatherCode.value
   }).map((weatherType) => {
     return {
       code: weatherType.code,
       label: weatherType.label,
       icon: weatherType.icon
-    };
-  });
-});
-
+    }
+  })
+})
 </script>
 <style scoped>
 .search-container {
@@ -194,11 +194,6 @@ const filteredWeatherTypes = computed(() => {
 i {
   margin-right: 2%;
 }
-.map-generator {
-  max-width: 100%;
-  max-height: 100%;
-  background: none;
-}
 #search-bar {
   padding: 10px;
   font-size: 16px;
@@ -209,7 +204,6 @@ i {
 p {
   margin-top: 4%;
 }
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -242,7 +236,6 @@ p {
   width: 75px;
   height: 40px;
 }
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -254,7 +247,6 @@ p {
   justify-content: center;
   align-items: center;
 }
-
 .modal {
   background-image: linear-gradient(90deg, lightgray, darkgray);
   padding: 20px;
@@ -264,14 +256,6 @@ p {
   width: 800px;
   text-align: left;
 }
-.map-icon {
-  color: darkblue;
-  text-align: center;
-  display: inline-block;
-  width: 100%;
-  font-size: 24px;
-}
-
 .close {
   color: white;
   float: right;
@@ -279,10 +263,14 @@ p {
   margin-right: 1%;
   cursor: pointer;
 }
-
 .close:hover,
 .close:focus {
   color: red;
   text-decoration: none;
+}
+@media (max-width: 767px) {
+  #search-bar {
+    width: 85%;
+  }
 }
 </style>

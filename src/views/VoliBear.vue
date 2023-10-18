@@ -4,8 +4,9 @@
       <div class="text">
         <h1>Merhaba,</h1>
 
-        Ben Kaan, Türkiye'den bir yazılımcıyım <br />
-        şu anda stajyerlik yapıyorum <span class="textcolor"> intime </span> ofisinde<br />
+        Merhaba Merhaba Merhaba Merhaba  <br />
+        Merhaba Merhaba Merhaba<span class="textcolor"> Merhaba </span> <br />
+        Merhaba Merhaba Merhaba Merhaba
       </div>
     </div>
     <div class="right">
@@ -50,37 +51,27 @@
   width: 50%;
   height: 84%;
 }
-@media (max-width: 426px) {
-  .mid {
-    width: 100%;
-    height: 560px;
+@media (max-width: 767px) {
+  .img {
+    height: auto;
+    max-width: 100%;
   }
-  .text {
-    margin: 0 50px 100px 0;
+  .mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
   }
   .left {
-    padding-top: 50px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 100px;
   }
   .right {
-    margin-left: 25%;
-  }
-  .img {
-    position: absolute;
-    bottom: 60px;
-    width: 300px;
-    height: 250px;
-    padding: 0;
-    left: 75px;
-  }
-}
-@media (max-width: 321px) {
-  .img {
-    position: absolute;
-    bottom: 0px;
-    width: 300px;
-    height: 250px;
-    padding: 0;
-    left: 50px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 </style>

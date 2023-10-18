@@ -14,19 +14,3 @@
   animation-iteration-count: 1;
   animation-duration: 2s;
 }
-@keyframes myRotate {
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-@media screen and (max-width: 768px) {
-  .orta {
-    flex-direction: column;
-  }
-  .orta .soll {
-    width: 100%;
-  }
-  .image {
-    display: none;
-  }
-}
