@@ -144,7 +144,7 @@ const closeModal = () => {
 
 @media (max-width: 767px) {
   .res {
-    width: 115px;
+    width: 124px;
     height: 100px;
   }
   .grid-container {

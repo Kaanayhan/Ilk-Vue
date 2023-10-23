@@ -189,10 +189,6 @@ const filteredWeatherTypes = computed(() => {
 })
 </script>
 <style scoped>
-.search-container {
-  margin-top: 1%;
-  margin-bottom: 20px;
-}
 .modalflex {
   display: flex;
   justify-content: space-around;
@@ -203,10 +199,27 @@ i {
 #search-bar {
   padding: 10px;
   font-size: 16px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 98%;
+  margin-left: 1%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-top: 1%;
+  margin-bottom: 20px;
+  border-left: 3px solid;
+  border-left-color: salmon;
+  transition: border-color 0.4s ease-out;
 }
+#search-bar:focus {
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 1px 2px,
+    rgb(51, 51, 51) 0px 0px 0px 1.5px;
+  outline: none;
+
+  border: 1px solid #eee;
+
+  border-left: 3px solid #888;
+}
+
 p {
   margin-top: 4%;
 }
@@ -278,10 +291,11 @@ p {
 @media (max-width: 767px) {
   #search-bar {
     width: 85%;
+    margin-left: 1.5%;
   }
   .modal {
     max-width: 90vw;
-    max-height: 100vh;
+    max-height: 100%;
   }
 
   .close {
@@ -305,10 +319,6 @@ p {
   .country-flag {
     width: 100%;
     height: auto;
-  }
-
-  .modal-content div {
-    margin-bottom: 2%;
   }
 }
 </style>
