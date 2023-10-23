@@ -3,29 +3,39 @@
     <div class="left">
       <table border="0">
         <tr>
-          <td><img src="../assets/İnsta.png" class="pictures" /></td>
+          <td>
+            <a href="https://www.instagram.com"><img src="../assets/İnsta.png" class="pictures" /></a>
+          </td>
           <td><span>instagram </span></td>
         </tr>
         <tr>
-          <td><img src="../assets/y.png" class="pictures" /></td>
+          <td>
+            <a href="https://www.youtube.com"><img src="../assets/y.png" class="pictures" /></a>
+          </td>
           <td>Youtube</td>
         </tr>
         <tr>
-          <td><img src="../assets/Face.png" class="pictures" /></td>
+          <td>
+            <a href="https://www.facebook.com"><img src="../assets/Face.png" class="pictures" /></a>
+          </td>
           <td>Facebook</td>
         </tr>
         <tr>
           <td>
-            <img
-              src="../assets/x-logo-twitter-elon-musk_dezeen_2364_col_0.webp"
-              class="pictures twit"
-            />
+            <a href="https://twitter.com">
+              <img
+                src="../assets/x-logo-twitter-elon-musk_dezeen_2364_col_0.webp"
+                class="pictures twit"
+              />
+            </a>
           </td>
           <td>Twitter</td>
         </tr>
         <tr>
           <td>
-            <img src="../assets/tiktok.png" class="pictures" />
+            <a href="https://www.tiktok.com/tr-TR">
+              <img src="../assets/tiktok.png" class="pictures" />
+            </a>
           </td>
           <td>Tiktok</td>
         </tr>
@@ -34,12 +44,14 @@
     <div class="right">
       <div class="center">
         <h1 class="title">Bize Katılın</h1>
-     <p>  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
-        perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque
-        iste! Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet
-        consectetur adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti
-        consectetur atque, vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto
-        amet minus</p> 
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis nihil exercitationem
+          perferendis, excepturi odio corrupti, quia dolorum amet dignissimos vitae quidem cumque
+          iste! Dolorum cumque et iure laudantium explicabo quia!Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Similique distinctio expedita hic. Labore nihil, corrupti
+          consectetur atque, vel quia, consequatur rem quas voluptatem sed ipsam nostrum architecto
+          amet minus
+        </p>
       </div>
     </div>
   </div>
@@ -55,7 +67,7 @@
   height: 90%;
 }
 .twit {
-  border-radius: 60px;
+  border-radius: 100px;
 }
 .left {
   width: 50%;
@@ -129,15 +141,15 @@
 }
 @media (max-width: 767px) {
   .mid {
-    flex-direction: column; 
+    flex-direction: column;
   }
   .left {
-    width: 100%; 
+    width: 100%;
     padding: 20px;
   }
   .right {
     width: 100%;
-    padding: 20px; 
+    padding: 20px;
   }
 }
 </style>

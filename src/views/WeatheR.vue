@@ -102,6 +102,7 @@ const filteredCountries = computed(() => {
     return country.name.toLowerCase().startsWith(searchKeyword.value.toLowerCase())
   })
 })
+
 const openModal = (country) => {
   selectedCountry.value = country
   const { latitude, longitude } = enlemBoylamGoster(country)
@@ -159,14 +160,9 @@ const getLanguages = (country) => {
     }
   }
 }
-const modalOverlayClick = (event) => {
-  event.stopPropagation()
-}
 
 const closeModal = () => {
   selectedCountry.value = null
-  const modalOverlay = document.querySelector('.modal-overlay')
-  modalOverlay.removeEventListener('click', modalOverlayClick)
 }
 
 const fetchWeatherData = (latitude, longitude) => {
@@ -241,7 +237,6 @@ p {
   width: 230px;
   height: 115px;
 }
-
 .flag-icon {
   width: 75px;
   height: 40px;
@@ -256,6 +251,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
 }
 .modal {
   background-image: linear-gradient(90deg, lightgray, darkgray);
@@ -265,6 +261,7 @@ p {
   max-width: 80%;
   width: 800px;
   text-align: left;
+  z-index: 20;
 }
 .close {
   color: white;
@@ -283,29 +280,35 @@ p {
     width: 85%;
   }
   .modal {
-    background-image: linear-gradient(90deg, lightgray, darkgray);
-    padding: 4vw;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    width: 90vw;
-    max-width: 400px;
-    text-align: left;
+    max-width: 90vw;
+    max-height: 100vh;
   }
 
   .close {
-    color: white;
-    float: right;
     font-size: 6vw;
     margin-right: 2vw;
-    cursor: pointer;
   }
 
-  .embedded-map-code {
-    font-size: 4vw;
-    margin-top: 2vw;
-  }
   .modalflex {
     flex-direction: column;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .country-image {
+    text-align: center;
+  }
+
+  .country-flag {
+    width: 100%;
+    height: auto;
+  }
+
+  .modal-content div {
+    margin-bottom: 2%;
   }
 }
 </style>

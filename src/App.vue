@@ -2,7 +2,7 @@
   <div>
     <div class="menu-btn" @click="toggleMenu">
       <i v-if="!menuOpen" class="fa-solid fa-bars fa-2xl" style="color: blue"></i>
-      <i v-else class="fa-solid fa-times fa-2xl" style="color: "></i>
+      <i v-else class="fa-solid fa-times fa-2xl" style="color:"></i>
     </div>
     <div class="top">
       <div class="logo">
@@ -31,7 +31,7 @@
           <router-link to="/havadurumu" class="color"> Ülkeler</router-link>
         </h1>
       </nav>
-      
+
       <!-- Mobil Menü -->
       <transition name="fade">
         <nav class="tab" v-if="menuOpen" :class="{ active: menuOpen }">
@@ -125,19 +125,19 @@ i {
     top: 0;
     right: 0;
     width: 50%;
-    height: 100%;
     background-color: #fff;
     box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     z-index: 998;
     text-align: center;
     display: none;
-    transition: max-height 0.3s ease-in-out;
+    height: 0px;
+    transition: height 0.3s ease-in-out;
   }
   .active {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
+    height: 100vh;
   }
   .fade-enter-active,
   .fade-leave-active {

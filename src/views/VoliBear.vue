@@ -4,10 +4,9 @@
       <div class="text">
         <h1>Welcome,</h1>
 
-        <p>
-          I am Kaan, a product designer from Turkey currently working with intime Merhaba Merhaba
-          Merhaba 
-        </p>
+        <div>
+          I am Kaan, a product designer from Turkey <p>currently working with intime  Merhaba Merhaba</p> 
+        </div>
       </div>
     </div>
     <div class="right">
