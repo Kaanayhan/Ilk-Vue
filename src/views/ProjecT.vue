@@ -107,6 +107,7 @@ const closeModal = () => {
   width: 100%;
   height: 90%;
   text-align: center;
+  margin-top: 7.5%;
 }
 .yerler {
   padding-left: 100px;
@@ -156,7 +157,7 @@ const closeModal = () => {
     align-content: center;
     height: 500px;
     margin-left: 20px;
-    margin-top: 75px;
+    margin-top: 25%;
   }
 }
 </style>

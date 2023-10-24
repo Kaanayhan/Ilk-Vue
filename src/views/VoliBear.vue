@@ -5,7 +5,8 @@
         <h1>Welcome,</h1>
 
         <div>
-          I am Kaan, a product designer from Turkey <p>currently working with intime Merhaba </p> 
+          I am Kaan, a product designer from Turkey
+          <p>currently working with intime Merhaba</p>
         </div>
       </div>
     </div>
@@ -15,12 +16,11 @@
   </div>
 </template>
 <style scoped>
-p{
+p {
   text-align: left;
 }
 .img {
   width: 100%;
-  height: 120%;
   animation: mySlide;
   animation-iteration-count: 1;
   animation-duration: 2s;
@@ -43,6 +43,7 @@ p{
   display: flex;
   width: 100%;
   height: 90%;
+  margin-top: 7.5%;
 }
 .left {
   width: 50%;

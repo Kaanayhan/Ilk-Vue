@@ -229,6 +229,7 @@ export default {
   font-weight: bold;
   padding-top: 30px;
   width: 100%;
+  margin-top: 7.5%;
   height: 90%;
 }
 .registerForm {
@@ -272,6 +273,7 @@ export default {
   .registerForm {
     width: 90%;
     margin-left: 5%;
+    margin-top: 20px;
   }
   .frame {
     flex-direction: column;

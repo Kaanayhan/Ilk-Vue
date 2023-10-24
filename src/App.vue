@@ -1,121 +1,235 @@
 <template>
-  <div>
-    <div class="menu-btn" @click="toggleMenu">
-      <i
-        :class="[menuOpen ? 'fa-times' : 'fa-bars', 'fa-solid', 'fa-2xl']"
-        style="color: yellow"
-      ></i>
-    </div>
-    <div class="top">
-      <div class="logo">
-        <router-link to="/" class="color">
-          <img src="@/assets/voli.png" class="image" />
-        </router-link>
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" name="" id="" />
+      <div class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
       </div>
-
-      <nav class="tab" :class="{ active: menuOpen }">
-        <h1 class="textTop">
-          <router-link to="/hakkimizda" class="color"> Hakkımızda </router-link>
-        </h1>
-        <h1 class="textTop">
-          <router-link to="/sosyal" class="color"> Sosyal </router-link>
-        </h1>
-        <h1 class="textTop">
-          <router-link to="/projeler" class="color"> Projeler </router-link>
-        </h1>
-        <h1 class="textTop">
-          <router-link to="/kayit" class="color"> Kayıt </router-link>
-        </h1>
-        <h1 class="textTop">
-          <router-link to="/yorumlar" class="color"> Yorum </router-link>
-        </h1>
-        <h1 class="textTop">
-          <router-link to="/havadurumu" class="color"> Ülkeler</router-link>
-        </h1>
-      </nav>
+      <ul class="menu-items">
+        <li><router-link to="/hakkimizda" class="color"> Hakkımızda </router-link></li>
+        <li><router-link to="/sosyal" class="color"> Sosyal </router-link></li>
+        <li><router-link to="/projeler" class="color"> Projeler </router-link></li>
+        <li><router-link to="/kayit" class="color"> Kayıt </router-link></li>
+        <li><router-link to="/yorum" class="color"> Yorum </router-link></li>
+        <li><router-link to="/havadurumu" class="color"> Ülkeler </router-link></li>
+      </ul>
+      <h1 class="logo">₺</h1>
     </div>
-    <router-view></router-view>
-  </div>
+  </nav>
+  <RouterView></RouterView>
 </template>
 
 <script>
+import { RouterView } from 'vue-router'
+
 export default {
-  data() {
-    return {
-      menuOpen: false
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.menuOpen = !this.menuOpen
-    }
-  }
+  name: 'App',
+  components: { RouterView }
 }
 </script>
+<style>
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-<style scoped>
-i {
+.html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1em;
+  text-transform: uppercase;
+  font-weight: small;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #16a083;
+}
+
+.btn-primary:hover {
+  background: #117964;
+  transition: background 0.3s ease-in-out;
+}
+
+.navbar input[type='checkbox'],
+.navbar .hamburger-lines {
   display: none;
 }
-.logo {
-  width: 7.5%;
-  height: 10%;
-  margin-top: 2%;
-  margin-left: 2%;
-}
-.top {
-  justify-content: space-between;
+
+.navbar {
+  display: block;
+  position: fixed;
   width: 100%;
-  display: flex;
+  top: 0;
+  background: #fff;
+  color: #000;
+  z-index: 1000;
+  box-shadow: 0px 5px 10px 0px #aaa;
 }
 
-.tab {
-  text-align: center;
-  width: 90%;
+.navbar-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  height: 64px;
   align-items: center;
 }
 
-.color:hover {
-  color: gray;
+.menu-items {
+  order: 2;
+  display: flex;
 }
 
-@media (max-width: 767px) {
-  .menu-btn {
-    flex-direction: column;
-    cursor: pointer;
-    padding: 2% 2%;
-    position: fixed;
-    top: 3.5%;
-    transition: 0.3s;
-    right: 2.5%;
-    z-index: 999;
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  color: #117964;
+  transition: color 0.3s ease-in-out;
+}
+
+.logo {
+  order: 1;
+  font-size: 2.3rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    opacity: 0.95;
   }
-  .image {
-    display: none;
-  }
-  i {
+
+  .navbar-container input[type='checkbox'],
+  .navbar-container .hamburger-lines {
     display: block;
   }
-  .tab {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50%;
-    background-color: #fff;
-    box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    z-index: 998;
-    text-align: center;
-    display: none;
-    height: 0px;
-    transition: height 0.3s ease-in-out;
+
+  .navbar-container {
+    display: block;
+    position: relative;
+    height: 64px;
   }
-  .active {
+
+  .navbar-container input[type='checkbox'] {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 30px;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+  }
+
+  .navbar-container .hamburger-lines {
+    display: block;
+    height: 23px;
+    width: 35px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    z-index: 2;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .navbar-container .hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #333;
+  }
+
+  .navbar-container .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar .menu-items {
+    padding-top: 100px;
+    background: #fff;
     height: 100vh;
+    max-width: 300px;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    padding-left: 50px;
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 5px 0px 10px 0px #aaa;
+  }
+
+  .navbar .menu-items li {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .logo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+  }
+
+  .navbar-container input[type='checkbox']:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+
+  .navbar-container input[type='checkbox']:checked ~ .hamburger-lines .line1 {
+    transform: rotate(35deg);
+  }
+
+  .navbar-container input[type='checkbox']:checked ~ .hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+
+  .navbar-container input[type='checkbox']:checked ~ .hamburger-lines .line3 {
+    transform: rotate(-35deg);
   }
 }
 </style>

@@ -4,7 +4,9 @@
       <table border="0">
         <tr>
           <td>
-            <a href="https://www.instagram.com"><img src="../assets/İnsta.png" class="pictures" /></a>
+            <a href="https://www.instagram.com"
+              ><img src="../assets/İnsta.png" class="pictures"
+            /></a>
           </td>
           <td><span>instagram </span></td>
         </tr>
@@ -65,6 +67,7 @@
   display: flex;
   width: 100%;
   height: 90%;
+  margin-top: 7.5%;
 }
 .twit {
   border-radius: 100px;
@@ -146,6 +149,7 @@
   .left {
     width: 100%;
     padding: 20px;
+    margin-top: 15px;
   }
   .right {
     width: 100%;

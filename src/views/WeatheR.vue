@@ -207,6 +207,7 @@ i {
   border-left: 3px solid;
   border-left-color: salmon;
   transition: border-color 0.4s ease-out;
+  margin-top: 5.5%;
 }
 #search-bar:focus {
   box-shadow:
@@ -266,6 +267,7 @@ p {
   z-index: 20;
 }
 .modal {
+  margin-top: 3%;
   background-image: linear-gradient(90deg, lightgray, darkgray);
   padding: 20px;
   border-radius: 10px;
@@ -277,12 +279,13 @@ p {
 
 @media (max-width: 768px) {
   #search-bar {
-    width: 85%;
     margin-left: 1.5%;
+    margin-top: 20%;
   }
   .modal {
     max-width: 90vw;
     margin-left: 5%;
+    margin-top: 70px;
   }
 
   .modalflex {

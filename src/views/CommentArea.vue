@@ -20,7 +20,7 @@ const sendComment = () => {
     <div class="isim" v-for="(comment, index) in store.getComments" :key="index">
       <b> {{ comment.username }} {{ comment.surname }}</b>
       <div class="alinanyorum">
-      <b>{{ comment.comment }}</b>  
+        <b>{{ comment.comment }}</b>
         <p class="date">
           {{ comment.date.getDate() }}/{{ comment.date.getMonth() + 1 }}/{{
             comment.date.getFullYear()
@@ -49,10 +49,11 @@ const sendComment = () => {
 .yorumm {
   padding: 20px;
   width: 75%;
-  height: 365px;
+  height: 510px;
   margin: 0 auto;
   overflow: auto;
   background-color: lightgray;
+  margin-top: 7.5%;
 }
 .isim {
   margin-top: 21px;
@@ -104,69 +105,67 @@ svg {
 }
 @media (max-width: 768px) {
   .yorumm {
-  padding: 10px;
-  width: 100%; 
-  height: 525px;
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: lightgray;
-}
+    padding: 10px;
+    width: 100%;
+    height: 525px;
+    max-width: 600px;
+    margin-top: 75px;
+    background-color: lightgray;
+  }
 
-.isim {
-  margin-top: 21px;
-}
+  .isim {
+    margin-top: 21px;
+  }
 
-.date {
-  text-align: end;
-}
+  .date {
+    text-align: end;
+  }
 
-hr {
-  width: 20%; 
-  margin: 10px auto;
-  height: 3px;
-  background-color: black;
-}
+  hr {
+    width: 20%;
+    margin: 10px auto;
+    height: 3px;
+    background-color: black;
+  }
 
-.alinanyorum {
-  background-color: white;
-  word-wrap: break-word;
-  margin-top: 10px;
-  padding: 10px;
-  width: 100%;
-  border-radius: 10px; 
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
-}
+  .alinanyorum {
+    background-color: white;
+    word-wrap: break-word;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-.sendComment {
-  margin: 0 auto;
-  margin-top: 15px;
-  padding: 15px 20px; 
-  font-size: 18px; 
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #04aa6d;
-  border: none;
-  border-radius: 25px; 
-  box-shadow: 0 5px #666; 
-  width: 80%; 
-  max-width: 300px; 
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-}
+  .sendComment {
+    margin: 0 auto;
+    margin-top: 5px;
+    padding: 12.5px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #04aa6d;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 5px #666;
+    width: 80%;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-svg {
-  fill: #ffffff;
-  margin-right: 5px;
-}
+  svg {
+    fill: #ffffff;
+    margin-right: 5px;
+  }
 
-.sendComment:active {
-  background-color: #3e8e41;
-  box-shadow: 0 2px #666;
-  transform: translateY(2px);
-}
-
-  
+  .sendComment:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+  }
 }
 </style>

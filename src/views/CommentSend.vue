@@ -198,6 +198,7 @@ svg {
   width: 50%;
   background-color: rgb(227, 242, 253);
   margin: 0px auto;
+  margin-top: 7.5%;
 }
 .error {
   color: red;
@@ -209,7 +210,7 @@ svg {
   width: 45%;
   height: 175px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 12.5%;
   text-align: center;
   display: flex;
 }
@@ -255,7 +256,7 @@ svg {
   align-items: center;
 }
 .delete {
-  margin-left: 275px;
+  margin-left: 350px;
 }
 .comment:active {
   background-color: #3e8e41;
@@ -316,7 +317,8 @@ svg {
     width: 100%;
   }
   .yorum {
-    height: 600px;
+    margin-top: 75px;
+    height: 85vh;
   }
   .butonlar {
     display: flex;
