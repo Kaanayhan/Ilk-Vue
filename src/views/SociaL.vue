@@ -4,7 +4,7 @@
       <table border="0">
         <tr>
           <td>
-            <a href="https://www.instagram.com"
+            <a href="https://www.instagram.com" target="_blank"
               ><img src="../assets/İnsta.png" class="pictures"
             /></a>
           </td>
@@ -12,19 +12,23 @@
         </tr>
         <tr>
           <td>
-            <a href="https://www.youtube.com"><img src="../assets/y.png" class="pictures" /></a>
+            <a href="https://www.youtube.com" target="_blank"
+              ><img src="../assets/y.png" class="pictures"
+            /></a>
           </td>
           <td>Youtube</td>
         </tr>
         <tr>
           <td>
-            <a href="https://www.facebook.com"><img src="../assets/Face.png" class="pictures" /></a>
+            <a href="https://www.facebook.com" target="_blank"
+              ><img src="../assets/Face.png" class="pictures"
+            /></a>
           </td>
           <td>Facebook</td>
         </tr>
         <tr>
           <td>
-            <a href="https://twitter.com">
+            <a href="https://twitter.com" target="_blank">
               <img
                 src="../assets/x-logo-twitter-elon-musk_dezeen_2364_col_0.webp"
                 class="pictures twit"
@@ -35,7 +39,7 @@
         </tr>
         <tr>
           <td>
-            <a href="https://www.tiktok.com/tr-TR">
+            <a href="https://www.tiktok.com/tr-TR" target="_blank">
               <img src="../assets/tiktok.png" class="pictures" />
             </a>
           </td>

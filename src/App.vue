@@ -15,7 +15,9 @@
         <li><router-link to="/yorum" class="color"> Yorum </router-link></li>
         <li><router-link to="/havadurumu" class="color"> Ülkeler </router-link></li>
       </ul>
-      <h1 class="logo">₺</h1>
+      <router-link to="/hakkimizda" class="color"
+        ><img src="../src/assets/voli.png" class="logo"
+      /></router-link>
     </div>
   </nav>
   <RouterView></RouterView>
@@ -44,6 +46,11 @@ export default {
 
 body {
   font-family: 'Poppins', sans-serif;
+}
+.logo {
+  width: 100px;
+  height: 75px;
+  margin-top: 17.5px;
 }
 
 .container {
@@ -211,9 +218,9 @@ body {
 
   .logo {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 2rem;
+    top: -5px;
+    right: 5px;
+    margin-top: 0;
   }
 
   .navbar-container input[type='checkbox']:checked ~ .menu-items {

@@ -2,7 +2,7 @@
   <div class="search-container">
     <input type="text" id="search-bar" v-model="searchKeyword" placeholder="Ülke ara..." />
   </div>
-  <div class="grid-container" style="position: relative">
+  <div class="grid-container">
     <div
       v-for="(country, index) in filteredCountries"
       :key="index"
@@ -264,10 +264,10 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 20;
 }
 .modal {
-  margin-top: 3%;
+  margin-top: 10%;
+  margin-bottom: 6%;
   background-image: linear-gradient(90deg, lightgray, darkgray);
   padding: 20px;
   border-radius: 10px;

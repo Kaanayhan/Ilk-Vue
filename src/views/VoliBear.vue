@@ -20,10 +20,12 @@ p {
   text-align: left;
 }
 .img {
-  width: 100%;
+  width: 450px;
+  height: 630px;
   animation: mySlide;
   animation-iteration-count: 1;
   animation-duration: 2s;
+  z-index: -1;
 }
 @keyframes mySlide {
   from {
