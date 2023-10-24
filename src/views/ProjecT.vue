@@ -142,7 +142,7 @@ const closeModal = () => {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .res {
     width: 124px;
     height: 100px;

@@ -54,7 +54,7 @@ p{
   width: 50%;
   height: 84%;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .img {
     height: auto;
     max-width: 100%;

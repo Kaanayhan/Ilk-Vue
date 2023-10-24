@@ -139,7 +139,7 @@
     opacity: 0;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .mid {
     flex-direction: column;
   }

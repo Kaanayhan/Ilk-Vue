@@ -102,7 +102,7 @@ svg {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .yorumm {
   padding: 10px;
   width: 100%; 
@@ -117,7 +117,6 @@ svg {
 }
 
 .date {
-  margin-top: 10px;
   text-align: end;
 }
 

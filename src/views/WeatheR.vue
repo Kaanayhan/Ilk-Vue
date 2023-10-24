@@ -2,7 +2,7 @@
   <div class="search-container">
     <input type="text" id="search-bar" v-model="searchKeyword" placeholder="Ülke ara..." />
   </div>
-  <div class="grid-container">
+  <div class="grid-container" style="position: relative">
     <div
       v-for="(country, index) in filteredCountries"
       :key="index"
@@ -12,45 +12,44 @@
       <div><img :src="country.flag" alt="Bayrak" class="flag-icon" /></div>
       <div>{{ country.translations.tur.common }}</div>
     </div>
-  </div>
-  <div v-if="selectedCountry" class="modal-overlay" @click="closeModal">
-    <div class="modal" @click.stop>
-      <h1 style="text-align: center; margin-bottom: 2.5%; font-size: 48px">
-        {{ selectedCountry.translations.tur.common }}
-        <span class="close" @click="closeModal">&times;</span>
-      </h1>
-      <div class="modalflex">
-        <div class="modal-content">
-          <div>
-            <div class="country-image">
-              <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
+    <div v-if="selectedCountry" class="modal-overlay" @click="closeModal">
+      <div class="modal" @click.stop>
+        <h1 style="text-align: center; margin-bottom: 2.5%; font-size: 48px">
+          {{ selectedCountry.translations.tur.common }}
+        </h1>
+        <div class="modalflex">
+          <div class="modal-content">
+            <div>
+              <div class="country-image">
+                <img :src="selectedCountry.flag" alt="Bayrak" class="country-flag" />
+              </div>
+              <div v-for="weatherType in filteredWeatherTypes" :key="weatherType.code">
+                <i :class="weatherType.icon"></i>{{ weatherType.label }}
+              </div>
             </div>
-            <div v-for="weatherType in filteredWeatherTypes" :key="weatherType.code">
-              <i :class="weatherType.icon"></i>{{ weatherType.label }}
-            </div>
+            <p>Başkent: {{ selectedCountry.capital?.[0] }}</p>
+            <p>Nüfus: {{ selectedCountry.population }}</p>
+            <p>Bölge: {{ selectedCountry.region }}</p>
+            <p>Para birimi: {{ selectedCountryCurrency.name }}</p>
+            <p>Para sembolü: {{ selectedCountryCurrency.symbol }}</p>
+            <p>Dil: {{ selectedCountrylanguages.languages.join(', ') }}</p>
           </div>
-          <p>Başkent: {{ selectedCountry.capital?.[0] }}</p>
-          <p>Nüfus: {{ selectedCountry.population }}</p>
-          <p>Bölge: {{ selectedCountry.region }}</p>
-          <p>Para birimi: {{ selectedCountryCurrency.name }}</p>
-          <p>Para sembolü: {{ selectedCountryCurrency.symbol }}</p>
-          <p>Dil: {{ selectedCountrylanguages.languages.join(', ') }}</p>
-        </div>
-        <div class="">
-          <div style="max-width: 100%; overflow: hidden; color: red; width: 500px; height: 500px">
-            <div id="my-map-display" style="height: 100%; width: 100%; max-width: 100%">
-              <iframe
-                style="height: 100%; width: 100%; border: 0"
-                frameborder="0"
-                :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}Country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
-              ></iframe>
+          <div class="">
+            <div style="max-width: 100%; overflow: hidden; color: red; width: 500px; height: 500px">
+              <div id="my-map-display" style="height: 100%; width: 100%; max-width: 100%">
+                <iframe
+                  style="height: 100%; width: 100%; border: 0"
+                  frameborder="0"
+                  :src="`https://www.google.com/maps/embed/v1/place?q=${selectedCountry.translations.tur.common}Country&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`"
+                ></iframe>
+              </div>
             </div>
+            <a
+              class="embedded-map-code"
+              href="https://www.bootstrapskins.com/themes"
+              id="get-data-for-embed-map"
+            ></a>
           </div>
-          <a
-            class="embedded-map-code"
-            href="https://www.bootstrapskins.com/themes"
-            id="get-data-for-embed-map"
-          ></a>
         </div>
       </div>
     </div>
@@ -264,7 +263,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  z-index: 20;
 }
 .modal {
   background-image: linear-gradient(90deg, lightgray, darkgray);
@@ -274,51 +273,29 @@ p {
   max-width: 80%;
   width: 800px;
   text-align: left;
-  z-index: 20;
 }
-.close {
-  color: white;
-  float: right;
-  font-size: 40px;
-  margin-right: 1%;
-  cursor: pointer;
-}
-.close:hover,
-.close:focus {
-  color: red;
-  text-decoration: none;
-}
-@media (max-width: 767px) {
+
+@media (max-width: 768px) {
   #search-bar {
     width: 85%;
     margin-left: 1.5%;
   }
   .modal {
     max-width: 90vw;
-    max-height: 100%;
-  }
-
-  .close {
-    font-size: 6vw;
-    margin-right: 2vw;
+    margin-left: 5%;
   }
 
   .modalflex {
     flex-direction: column;
   }
 
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .country-image {
-    text-align: center;
-  }
-
   .country-flag {
     width: 100%;
     height: auto;
+  }
+  .modal-overlay {
+    overflow: scroll;
+    display: inline-block;
   }
 }
 </style>

@@ -279,7 +279,7 @@ svg {
   resize: none;
   height: 170px;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .giriss,
   .adsoyad,
   .adsoyadyorum,

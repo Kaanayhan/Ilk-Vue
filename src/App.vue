@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="menu-btn" @click="toggleMenu">
-      <i v-if="!menuOpen" class="fa-solid fa-bars fa-2xl" style="color: blue"></i>
-      <i v-else class="fa-solid fa-times fa-2xl" style="color:"></i>
+      <i
+        :class="[menuOpen ? 'fa-times' : 'fa-bars', 'fa-solid', 'fa-2xl']"
+        style="color: yellow"
+      ></i>
     </div>
     <div class="top">
       <div class="logo">
@@ -11,7 +13,7 @@
         </router-link>
       </div>
 
-      <nav class="tab">
+      <nav class="tab" :class="{ active: menuOpen }">
         <h1 class="textTop">
           <router-link to="/hakkimizda" class="color"> Hakkımızda </router-link>
         </h1>
@@ -31,30 +33,6 @@
           <router-link to="/havadurumu" class="color"> Ülkeler</router-link>
         </h1>
       </nav>
-
-      <!-- Mobil Menü -->
-      <transition name="fade">
-        <nav class="tab" v-if="menuOpen" :class="{ active: menuOpen }">
-          <h1 class="textTop">
-            <router-link to="/hakkimizda" class="color"> Hakkımızda </router-link>
-          </h1>
-          <h1 class="textTop">
-            <router-link to="/sosyal" class="color"> Sosyal </router-link>
-          </h1>
-          <h1 class="textTop">
-            <router-link to="/projeler" class="color"> Projeler </router-link>
-          </h1>
-          <h1 class="textTop">
-            <router-link to="/kayit" class="color"> Kayıt </router-link>
-          </h1>
-          <h1 class="textTop">
-            <router-link to="/yorumlar" class="color"> Yorum </router-link>
-          </h1>
-          <h1 class="textTop">
-            <router-link to="/havadurumu" class="color"> Ülkeler</router-link>
-          </h1>
-        </nav>
-      </transition>
     </div>
     <router-view></router-view>
   </div>
@@ -138,20 +116,6 @@ i {
     display: flex;
     flex-direction: column;
     height: 100vh;
-  }
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: transform 0.7s ease-out;
-  }
-
-  .fade-enter,
-  .fade-leave-to {
-    transform: translateX(120%);
-  }
-
-  .fade-enter-to,
-  .fade-leave {
-    transform: translateX(-0.1%);
   }
 }
 </style>
