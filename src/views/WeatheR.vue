@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { WeatherConstants } from '../../public/constants/weather-constants'
 
 const countryList = ref([])
@@ -96,12 +96,28 @@ onMounted(() => {
 const modalClick = (event) => {
   event.stopPropagation()
 }
-const filteredCountries = computed(() => {
-  return countryList.value.filter((country) => {
-    return country.name.toLowerCase().startsWith(searchKeyword.value.toLowerCase())
-  })
-})
+const filteredCountries = ref([])
 
+const filterCountriesByKeyword = async () => {
+  if (searchKeyword.value.length >= 3 || searchKeyword.value === '') {
+    const response = await fetch(`https://restcountries.com/v3.1/name/${searchKeyword.value}`)
+    const data = await response.json()
+    filteredCountries.value = data.map((country) => {
+      return {
+        ...country,
+        flag: country.flags?.png || 'YOK',
+        maps: country.maps || 'YOK',
+        name: country.translations.tur.common
+      }
+    })
+  } else {
+    filteredCountries.value = []
+  }
+}
+
+watch(searchKeyword, () => {
+  filterCountriesByKeyword()
+})
 const openModal = (country) => {
   selectedCountry.value = country
   const { latitude, longitude } = enlemBoylamGoster(country)

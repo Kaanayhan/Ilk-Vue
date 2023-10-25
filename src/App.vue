@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="navbar-container container">
-      <input type="checkbox" name="" id="" />
+      <input type="checkbox" />
       <div class="hamburger-lines">
         <span class="line line1"></span>
         <span class="line line2"></span>
@@ -22,13 +22,27 @@
   </nav>
   <RouterView></RouterView>
 </template>
-
 <script>
-import { RouterView } from 'vue-router'
-
 export default {
-  name: 'App',
-  components: { RouterView }
+  data() {
+    return {
+      isMenuOpen: false
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
+    closeMenu() {
+      this.isMenuOpen = false
+    }
+  },
+  mounted() {
+    document.addEventListener('click', this.closeMenu)
+  },
+  beforeUnmount() {
+    document.removeEventListener('click', this.closeMenu)
+  }
 }
 </script>
 <style>

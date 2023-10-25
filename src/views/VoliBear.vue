@@ -4,9 +4,8 @@
       <div class="text">
         <h1>Welcome,</h1>
 
-        <div>
-          I am Kaan, a product designer from Turkey
-          <p>currently working with intime Merhaba</p>
+        <div style="text-align: left">
+          <p>I am Kaan, a product designer from</p> <p>Turkey currently working with intime Merhaba</p>
         </div>
       </div>
     </div>

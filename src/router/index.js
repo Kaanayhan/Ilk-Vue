@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -31,11 +30,19 @@ const router = createRouter({
     {
       path: '/yorumlar',
       component: () => import('../views/CommentArea.vue')
-    }, {
+    },
+    {
       path: '/havadurumu',
       component: () => import('../views/WeatheR.vue')
-    },
+    }
   ]
+})
+router.beforeEach((to, from, next) => {
+  const nav = document.querySelector('.navbar input[type="checkbox"]')
+  if (nav.checked) {
+    nav.checked = false 
+  }
+  next()
 })
 
 export default router
