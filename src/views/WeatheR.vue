@@ -98,11 +98,11 @@ const modalClick = (event) => {
 }
 const filteredCountries = ref([])
 
-const filterCountriesByKeyword = async () => {
-  if (searchKeyword.value.length >= 3 || searchKeyword.value === '') {
+const getLastFetchedData = async () => {
+  if (searchKeyword.value.length >= 3) {
     const response = await fetch(`https://restcountries.com/v3.1/name/${searchKeyword.value}`)
     const data = await response.json()
-    filteredCountries.value = data.map((country) => {
+    return data.map((country) => {
       return {
         ...country,
         flag: country.flags?.png || 'YOK',
@@ -111,8 +111,12 @@ const filterCountriesByKeyword = async () => {
       }
     })
   } else {
-    filteredCountries.value = []
+    return []
   }
+}
+
+const filterCountriesByKeyword = async () => {
+  filteredCountries.value = await getLastFetchedData()
 }
 
 watch(searchKeyword, () => {
@@ -223,7 +227,7 @@ i {
   border-left: 3px solid;
   border-left-color: salmon;
   transition: border-color 0.4s ease-out;
-  margin-top: 5.5%;
+  margin-top: 85px;
 }
 #search-bar:focus {
   box-shadow:
@@ -296,7 +300,6 @@ p {
 @media (max-width: 768px) {
   #search-bar {
     margin-left: 1.5%;
-    margin-top: 20%;
   }
   .modal {
     max-width: 90vw;

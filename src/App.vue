@@ -22,29 +22,6 @@
   </nav>
   <RouterView></RouterView>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      isMenuOpen: false
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen
-    },
-    closeMenu() {
-      this.isMenuOpen = false
-    }
-  },
-  mounted() {
-    document.addEventListener('click', this.closeMenu)
-  },
-  beforeUnmount() {
-    document.removeEventListener('click', this.closeMenu)
-  }
-}
-</script>
 <style>
 *,
 *::after,
